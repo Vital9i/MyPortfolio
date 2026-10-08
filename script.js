@@ -235,11 +235,7 @@ function initSystemGears() {
   const NS = 'http://www.w3.org/2000/svg';
   const PI = Math.PI;
   const m = 10;
-  const alpha = (25 * PI) / 180;
-  const cosA = Math.cos(alpha);
   const ha = 0.88;
-  const hf = 1.16;
-  const backlash = 0.0042;
 
   const svgEl = (name, attrs) => {
     const node = document.createElementNS(NS, name);
@@ -264,35 +260,64 @@ function initSystemGears() {
   };
 
   const zA = 17;
-  const zSeo = 12;
+  const zVid = 12;
   const zS = 19;
   const zBiz = 30;
-  const zV = 15;
-  const zAn = 12;
-  const site = [20.1598 * Math.cos((33 * PI) / 180), 20.1598 * Math.sin((33 * PI) / 180)];
-  const video = [20.545 * Math.cos((-26 * PI) / 180), 20.545 * Math.sin((-26 * PI) / 180)];
+  const zSeo = 12;
+  const zVd = 24;
+  const Las = 20.06;
+  const site = [Las * Math.cos((36 * PI) / 180), Las * Math.sin((36 * PI) / 180)];
   const origin = [0, 0];
-  const seoPair = hits(origin, (zA + zSeo) / 2, site, (zSeo + zS) / 2);
-  const anPair = hits(origin, (zA + zAn) / 2, video, (zAn + zV) / 2);
   const side = (ax, ay, px, py) => ax * py - ay * px;
-  const seo = side(site[0], site[1], seoPair[0][0], seoPair[0][1]) > 0 ? seoPair[0] : seoPair[1];
-  const analytics = side(video[0], video[1], anPair[0][0], anPair[0][1]) < 0 ? anPair[0] : anPair[1];
-  const bizPair = hits(site, (zS + zBiz) / 2, video, (zV + zBiz) / 2);
-  const biz = bizPair[0][0] > bizPair[1][0] ? bizPair[0] : bizPair[1];
-  const math = { ads: origin, seo, site, biz, video, analytics };
+  const seoPair = hits(origin, (zA + zSeo) / 2, site, (zSeo + zS) / 2);
+  const videoPair = hits(origin, (zA + zVid) / 2, site, (zVid + zS) / 2);
+  const seo = side(site[0], site[1], seoPair[0][0], seoPair[0][1]) < 0 ? seoPair[0] : seoPair[1];
+  const video = side(site[0], site[1], videoPair[0][0], videoPair[0][1]) > 0 ? videoPair[0] : videoPair[1];
+  const raOf = (z) => z / 2 + ha;
+  const gapOf = (p, z1, q, z2) => Math.hypot(p[0] - q[0], p[1] - q[1]) - raOf(z1) - raOf(z2);
+  const distVd = (zVd + zA) / 2;
+  let vd = [-distVd, 0];
+  for (let deg = 165; deg <= 210; deg += 1) {
+    const a = (deg * PI) / 180;
+    const cand = [distVd * Math.cos(a), distVd * Math.sin(a)];
+    if (gapOf(cand, zVd, video, zVid) > 0.55 && gapOf(cand, zVd, seo, zSeo) > 0.55 && gapOf(cand, zVd, site, zS) > 0.55) {
+      vd = cand;
+      break;
+    }
+  }
+  const distBiz = (zS + zBiz) / 2;
+  let biz = [site[0] + distBiz, site[1]];
+  let bestScore = -Infinity;
+  for (let deg = -75; deg <= 25; deg += 1) {
+    const a = (deg * PI) / 180;
+    const cand = [site[0] + distBiz * Math.cos(a), site[1] + distBiz * Math.sin(a)];
+    const minGap = Math.min(
+      gapOf(cand, zBiz, origin, zA),
+      gapOf(cand, zBiz, video, zVid),
+      gapOf(cand, zBiz, seo, zSeo),
+      gapOf(cand, zBiz, vd, zVd)
+    );
+    if (minGap < 0.55) continue;
+    const score = cand[0] - Math.abs(cand[1]) * 0.2;
+    if (score > bestScore) {
+      bestScore = score;
+      biz = cand;
+    }
+  }
+  const math = { ads: origin, seo, video, site, vd, biz };
   const theta = { ads: 0 };
   theta.seo = mate(zA, theta.ads, aim(origin, seo), zSeo);
   theta.site = mate(zSeo, theta.seo, aim(seo, site), zS);
+  theta.video = mate(zA, theta.ads, aim(origin, video), zVid);
+  theta.vd = mate(zA, theta.ads, aim(origin, vd), zVd);
   theta.biz = mate(zS, theta.site, aim(site, biz), zBiz);
-  theta.video = mate(zBiz, theta.biz, aim(biz, video), zV);
-  theta.analytics = mate(zV, theta.video, aim(video, analytics), zAn);
 
   const gears = [
-    { id: 'analytics', z: zAn, sign: -1, tone: 'light', label: 'АНАЛИТИКА', icon: 'bars', service: true, caption: 'Показывает, что приносит обращения' },
     { id: 'seo', z: zSeo, sign: -1, tone: 'light', label: 'SEO', icon: 'search', service: true, caption: 'Помогает находить сайт в поиске' },
+    { id: 'video', z: zVid, sign: -1, tone: 'light', label: 'ВИДЕО', icon: 'play', service: true, caption: 'Показывает продукт и создаёт доверие' },
     { id: 'ads', z: zA, sign: 1, tone: 'light', label: 'РЕКЛАМА', icon: 'target', service: true, caption: 'Приводит людей, которые ищут вашу услугу' },
-    { id: 'video', z: zV, sign: 1, tone: 'light', label: 'ВИДЕО', icon: 'play', service: true, caption: 'Показывает продукт и создаёт доверие' },
     { id: 'site', z: zS, sign: 1, tone: 'light', label: 'САЙТ', icon: 'browser', service: true, caption: 'Отвечает на вопросы и помогает оставить заявку' },
+    { id: 'vd', z: zVd, sign: -1, tone: 'lime', label: 'VD Group', icon: '', wordmark: true, service: false },
     { id: 'biz', z: zBiz, sign: -1, tone: 'lime', label: 'БИЗНЕС', icon: 'chart', service: false, sub: 'Обращения → Продажи' }
   ];
   const byId = {};
@@ -306,49 +331,33 @@ function initSystemGears() {
   });
 
   const route = {
-    ads: ['ads', 'seo', 'site', 'biz'],
-    seo: ['seo', 'site', 'biz'],
+    ads: ['ads', 'video', 'site', 'biz'],
+    video: ['video', 'site', 'biz'],
     site: ['site', 'biz'],
-    video: ['video', 'biz'],
-    analytics: ['analytics', 'video', 'biz']
+    seo: ['seo', 'site', 'biz']
   };
 
-  const psiOf = (t) => t - Math.atan(t);
   const gearPath = (z) => {
     const rp = (z * m) / 2;
-    const rb = rp * cosA;
-    const ra = rp + ha * m;
-    const rd = rp - hf * m;
-    const rot = PI / (2 * z) - backlash + (Math.tan(alpha) - alpha);
+    const toothSize = 13;
+    const halfW = toothSize / 2 - 0.35;
+    const addendum = (toothSize - 0.8) / 2;
+    const ra = rp + addendum;
+    const rd = ra - toothSize;
+    const xRoot = Math.sqrt(Math.max(1, rd * rd - halfW * halfW));
+    const xTip = Math.sqrt(Math.max(1, ra * ra - halfW * halfW));
     const pitch = (2 * PI) / z;
-    const tTip = Math.sqrt(Math.max(0, (ra * ra) / (rb * rb) - 1));
-    const steps = 10;
-    const flank = (t, flankSide) => {
-      const r = rb * Math.sqrt(1 + t * t);
-      const phi = flankSide * (rot - psiOf(t));
-      return [r * Math.cos(phi), r * Math.sin(phi)];
-    };
-    const tooth = [];
-    tooth.push([rd * Math.cos(-rot), rd * Math.sin(-rot)]);
-    if (rd < rb - 0.2) tooth.push([rb * Math.cos(-rot), rb * Math.sin(-rot)]);
-    for (let i = 1; i <= steps; i += 1) tooth.push(flank((tTip * i) / steps, -1));
-    const tipL = flank(tTip, -1);
-    const tipR = flank(tTip, 1);
-    const aL = Math.atan2(tipL[1], tipL[0]);
-    const aR = Math.atan2(tipR[1], tipR[0]);
-    let sweep = aR - aL;
-    if (sweep > PI) sweep -= 2 * PI;
-    if (sweep < -PI) sweep += 2 * PI;
-    for (let i = 1; i < 4; i += 1) {
-      const a = aL + sweep * (i / 4);
-      tooth.push([ra * Math.cos(a), ra * Math.sin(a)]);
-    }
-    for (let i = steps; i >= 1; i -= 1) tooth.push(flank((tTip * i) / steps, 1));
-    if (rd < rb - 0.2) tooth.push([rb * Math.cos(rot), rb * Math.sin(rot)]);
-    tooth.push([rd * Math.cos(rot), rd * Math.sin(rot)]);
-    const gap = pitch - 2 * rot;
-    for (let i = 1; i <= 4; i += 1) {
-      const a = rot + gap * (i / 4);
+    const aRootL = Math.atan2(-halfW, xRoot);
+    const aRootR = Math.atan2(halfW, xRoot);
+    const tooth = [
+      [xRoot, -halfW],
+      [xTip, -halfW],
+      [xTip, halfW],
+      [xRoot, halfW]
+    ];
+    const gapSteps = 4;
+    for (let i = 1; i <= gapSteps; i += 1) {
+      const a = aRootR + (pitch + aRootL - aRootR) * (i / gapSteps);
       tooth.push([rd * Math.cos(a), rd * Math.sin(a)]);
     }
     const all = [];
@@ -481,21 +490,25 @@ function initSystemGears() {
       fill: '#141412',
       class: 'gear-hub-disk'
     }));
-    const icon = addIcon(g.icon, ink);
-    const iconScale = g.hubR / (g.z <= 12 ? 42 : g.sub ? 58 : 50);
-    icon.setAttribute('transform', `translate(0 ${(-g.hubR * (g.sub ? 0.38 : 0.28)).toFixed(2)}) scale(${iconScale.toFixed(3)})`);
-    hub.appendChild(icon);
+    let icon = null;
+    let iconScale = 1;
+    if (g.icon) {
+      icon = addIcon(g.icon, ink);
+      iconScale = g.hubR / (g.z <= 12 ? 42 : g.sub ? 58 : 50);
+      icon.setAttribute('transform', `translate(0 ${(-g.hubR * (g.sub ? 0.38 : 0.28)).toFixed(2)}) scale(${iconScale.toFixed(3)})`);
+      hub.appendChild(icon);
+    }
     g.iconEl = icon;
     g.iconScale = iconScale;
     const name = svgEl('text', {
       x: '0',
-      y: (g.hubR * (g.sub ? 0.08 : 0.28)).toFixed(2),
+      y: (g.wordmark ? 0 : g.hubR * (g.sub ? 0.08 : 0.28)).toFixed(2),
       'text-anchor': 'middle',
       'dominant-baseline': 'middle',
-      fill: ink,
-      'font-family': 'Oswald, sans-serif',
-      'font-weight': '600',
-      'letter-spacing': g.z <= 12 ? '0' : '0.02em'
+      fill: g.wordmark ? '#e8e6df' : ink,
+      'font-family': g.wordmark ? 'Manrope, sans-serif' : 'Oswald, sans-serif',
+      'font-weight': g.wordmark ? '700' : '600',
+      'letter-spacing': g.wordmark ? '-0.03em' : (g.z <= 12 ? '0' : '0.02em')
     });
     name.textContent = g.label;
     hub.appendChild(name);
@@ -549,7 +562,35 @@ function initSystemGears() {
     if (width < 8) return;
     const scale = width / vbW;
     gears.forEach((g) => {
-      const budget = g.hubR * 1.62;
+      const budget = g.hubR * (g.wordmark ? 1.7 : 1.62);
+      if (g.wordmark) {
+        let markUser = g.hubR * 0.34;
+        g.nameEl.replaceChildren();
+        g.nameEl.textContent = g.label;
+        g.nameEl.setAttribute('font-size', markUser.toFixed(2));
+        const markLen = g.nameEl.getComputedTextLength();
+        if (markLen > budget && markLen > 0) markUser *= budget / markLen;
+        if (markUser * scale >= 12) {
+          g.nameEl.textContent = g.label;
+          g.nameEl.setAttribute('font-size', markUser.toFixed(2));
+          g.nameEl.setAttribute('y', '0');
+          return;
+        }
+        g.nameEl.textContent = '';
+        ['VD', 'Group'].forEach((row, index) => {
+          const span = svgEl('tspan', { x: '0', dy: index === 0 ? '0' : '1.05em' });
+          span.textContent = row;
+          g.nameEl.appendChild(span);
+        });
+        markUser = Math.max(markUser * 1.7, 12 / scale);
+        g.nameEl.setAttribute('font-size', markUser.toFixed(2));
+        const spans = [...g.nameEl.querySelectorAll('tspan')];
+        const longest = Math.max(...spans.map((span) => span.getComputedTextLength()));
+        if (longest > budget && longest > 0) markUser *= budget / longest;
+        g.nameEl.setAttribute('font-size', markUser.toFixed(2));
+        g.nameEl.setAttribute('y', (-g.hubR * 0.22).toFixed(2));
+        return;
+      }
       const screen = Math.min(g.sub ? 24 : 16, Math.max(11, g.hubR * scale * 0.34));
       let user = screen / scale;
       g.nameEl.replaceChildren();
@@ -559,22 +600,6 @@ function initSystemGears() {
       if (length > budget && length > 0) {
         user *= budget / length;
         g.nameEl.setAttribute('font-size', user.toFixed(2));
-      }
-      if (g.id === 'analytics' && user * scale < 11) {
-        g.nameEl.textContent = '';
-        ['АНАЛИ', 'ТИКА'].forEach((row, index) => {
-          const span = svgEl('tspan', { x: '0', dy: index === 0 ? '0' : '1.05em' });
-          span.textContent = row;
-          g.nameEl.appendChild(span);
-        });
-        let stacked = 12 / scale;
-        g.nameEl.setAttribute('font-size', stacked.toFixed(2));
-        const spans = [...g.nameEl.querySelectorAll('tspan')];
-        const longest = Math.max(...spans.map((span) => span.getComputedTextLength()));
-        if (longest > budget && longest > 0) stacked *= budget / longest;
-        g.nameEl.setAttribute('font-size', stacked.toFixed(2));
-        g.nameEl.setAttribute('y', (g.hubR * 0.18).toFixed(2));
-        g.iconEl.setAttribute('transform', `translate(0 ${(-g.hubR * 0.42).toFixed(2)}) scale(${(g.iconScale * 0.78).toFixed(3)})`);
       }
       if (!g.subEl) return;
       const line = g.sub;
