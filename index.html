@@ -177,226 +177,278 @@
       </div>
     </section>
 
-    <section class="vd-band vd-band-light" id="services" aria-labelledby="services-title">
-      <div class="container">
-        <p class="vd-kicker">Направления</p>
-        <h2 class="vd-display" id="services-title">Что мы делаем</h2>
-        <p class="vd-lead">Сайты на HTML, CSS, JavaScript и React. Реклама в Google и Яндексе. Видео для YouTube, Instagram Reels, рекламы и сайта.</p>
-
-        <article class="vd-service reveal">
-          <div class="vd-service-copy">
-            <p class="vd-service-index"><span>01</span> Сайты</p>
-            <h3>Сайт начинается со спроса</h3>
-            <p>Изучаем поисковые запросы и вопросы клиентов. На этой основе выстраиваем структуру, содержание и удобный путь к обращению.</p>
-            <a class="vd-btn" href="#contact" data-direction="site">Обсудить сайт</a>
+    <div class="vd-content">
+      <section class="vdp-section vdp-light" id="services" aria-labelledby="sites-title">
+        <div class="container">
+          <div class="vdp-head">
+            <p class="vdp-eyebrow">01 · Сайты</p>
+            <h2 class="vdp-title" id="sites-title">Сайт начинается со спроса</h2>
+            <p class="vdp-lead">Изучаем, что ищут ваши клиенты и какие вопросы задают перед обращением. На этой основе создаём структуру, страницы и содержание сайта.</p>
           </div>
-          <div class="vd-service-scope">
-            <p class="vd-scope-label">Состав работ</p>
-            <ul>
-              <li>Изучение спроса.</li>
-              <li>Структура и содержание.</li>
-              <li>Дизайн и разработка.</li>
-              <li>Адаптация для мобильных устройств.</li>
-              <li>Формы, аналитика и подготовка к рекламе.</li>
-            </ul>
+          <div class="vdp-site-showcase" aria-label="Пример разработки сайта">
+            <div class="vdp-browser">
+              <div class="vdp-browser-bar"><i></i><i></i><i></i><span>vdgroup.dev/project</span></div>
+              <div class="vdp-browser-page">
+                <div class="vdp-mock-nav"><b>TOP BUILDING</b><span>Проекты&nbsp;&nbsp; О компании&nbsp;&nbsp; Контакты</span></div>
+                <div class="vdp-mock-hero"><span>СТРОИМ ДОМА<br>ДЛЯ ЖИЗНИ</span><i></i></div>
+                <div class="vdp-mock-lines"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+            <pre class="vdp-code" aria-label="Фрагмент кода"><code><span>&lt;section</span> class="project"&gt;
+  &lt;h1&gt;Дом для жизни&lt;/h1&gt;
+  &lt;p&gt;Продуманная архитектура&lt;/p&gt;
+<span>&lt;/section&gt;</span>
+
+.project {
+  display: grid;
+  gap: 2rem;
+}</code></pre>
           </div>
-        </article>
-
-        <article class="vd-service reveal">
-          <div class="vd-service-copy">
-            <p class="vd-service-index"><span>02</span> Реклама</p>
-            <h3>Реклама с понятной задачей</h3>
-            <p>Настраиваем Google и Яндекс под ваши услуги, географию и спрос. Связываем объявления с подходящими страницами сайта и отслеживаем обращения.</p>
-            <a class="vd-btn" href="#contact" data-direction="ads">Обсудить рекламу</a>
-          </div>
-          <div class="vd-service-scope">
-            <p class="vd-scope-label">Состав работ</p>
-            <ul>
-              <li>Анализ запросов и аудитории.</li>
-              <li>Настройка рекламных кампаний.</li>
-              <li>Подготовка объявлений.</li>
-              <li>Проверка посадочных страниц.</li>
-              <li>Аналитика и оптимизация.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="vd-service reveal">
-          <div class="vd-service-copy">
-            <p class="vd-service-index"><span>03</span> Видео</p>
-            <h3>Ваш бизнес стоит показать</h3>
-            <p>Показываем людей, процесс, внимание к деталям и результат. Помогаем клиенту познакомиться с компанией и понять предложение.</p>
-            <a class="vd-btn" href="#contact" data-direction="video">Обсудить видео</a>
-          </div>
-          <div class="vd-service-scope">
-            <p class="vd-scope-label">Состав работ</p>
-            <ul>
-              <li>Идея и сценарий.</li>
-              <li>Съёмка и монтаж.</li>
-              <li>Знакомство с компанией.</li>
-              <li>Демонстрация услуг и обзоры продуктов.</li>
-              <li>Отзывы покупателей.</li>
-              <li>Адаптация для YouTube, Reels, рекламы и сайта.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="vd-band vd-band-dark" id="projects" aria-labelledby="projects-title">
-      <div class="container vd-projects">
-        <p class="vd-kicker">Практика</p>
-        <h2 class="vd-display" id="projects-title">Проекты в работе и результаты</h2>
-        <p class="vd-lead">Публикуем проект, когда можно показать задачу, сделанные работы и сам материал — сайт или видео. Результат указываем только если он подтверждён.</p>
-        <ul class="vd-rules">
-          <li><h3>Задача</h3><p>Что нужно было решить для бизнеса.</p></li>
-          <li><h3>Работы</h3><p>Какие страницы, кампании или ролики сделаны.</p></li>
-          <li><h3>Материал</h3><p>Ссылка на сайт или видео.</p></li>
-          <li><h3>Результат</h3><p>Цифра или факт — только с подтверждением.</p></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="vd-band vd-band-light" id="process" aria-labelledby="process-title">
-      <div class="container">
-        <p class="vd-kicker">Порядок</p>
-        <h2 class="vd-display" id="process-title">Как мы работаем</h2>
-        <ol class="vd-steps">
-          <li class="vd-step reveal">
-            <span class="vd-step-num">01</span>
-            <h3>Разбираемся в бизнесе, продукте и задаче</h3>
-            <p>Фиксируем, что вы предлагаете, кому и зачем нужен сайт, реклама или видео.</p>
-          </li>
-          <li class="vd-step reveal">
-            <span class="vd-step-num">02</span>
-            <h3>Изучаем спрос и вопросы клиентов</h3>
-            <p>Смотрим, как люди ищут услугу и что хотят понять до обращения.</p>
-          </li>
-          <li class="vd-step reveal">
-            <span class="vd-step-num">03</span>
-            <h3>Продумываем сайт, рекламу и видео</h3>
-            <p>Собираем страницы, объявления и ролики в один путь клиента.</p>
-          </li>
-          <li class="vd-step reveal">
-            <span class="vd-step-num">04</span>
-            <h3>Создаём материалы и запускаем инструменты</h3>
-            <p>Делаем страницы, кампании и видео и связываем их между собой.</p>
-          </li>
-          <li class="vd-step reveal">
-            <span class="vd-step-num">05</span>
-            <h3>Анализируем обращения и улучшаем систему</h3>
-            <p>Смотрим, какие обращения приходят, и правим то, что мешает следующему шагу.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="vd-band vd-band-olive" id="measure" aria-labelledby="measure-title">
-      <div class="container vd-measure">
-        <div>
-          <p class="vd-kicker">Ориентиры</p>
-          <h2 class="vd-display" id="measure-title">Что оцениваем</h2>
-          <p class="vd-lead">Оцениваем работу системы по тому, как она помогает бизнесу получать клиентов. Для этого связываем данные рекламы, сайта и продаж.</p>
-        </div>
-        <ul class="vd-measure-list">
-          <li>
-            <h3>Обращения и их качество</h3>
-            <p>Кто написал или позвонил и насколько запрос совпадает с услугой.</p>
-          </li>
-          <li>
-            <h3>Стоимость обращения</h3>
-            <p>Сколько рекламных расходов приходится на одно обращение.</p>
-          </li>
-          <li>
-            <h3>Продажи</h3>
-            <p>Считаем, когда заказчик передаёт данные о сделках.</p>
-          </li>
-          <li>
-            <h3>Окупаемость</h3>
-            <p>Считаем, когда есть данные о выручке и расходах.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="vd-band vd-band-light" id="faq" aria-labelledby="faq-title">
-      <div class="container vd-faq-wrap">
-        <div>
-          <p class="vd-kicker">До старта</p>
-          <h2 class="vd-display" id="faq-title">Вопросы перед стартом</h2>
-        </div>
-        <div class="vd-faq">
-          <details class="vd-faq-item">
-            <summary>Можно заказать одну услугу?</summary>
-            <p>Да. Сайт, рекламу или видео можно заказать отдельно. Если нужно связать несколько направлений, собираем их в одну систему.</p>
-          </details>
-          <details class="vd-faq-item">
-            <summary>Что делать, если сайт уже есть?</summary>
-            <p>Разберём текущие страницы и спрос. Если сайт отвечает на вопросы клиентов и принимает обращения, его можно оставить и усилить рекламой и видео. Если нет — предложим, что изменить.</p>
-          </details>
-          <details class="vd-faq-item">
-            <summary>Обязательно ли снимать видео?</summary>
-            <p>Нет. Видео нужно, когда важно показать людей, процесс или продукт. Если задача решается сайтом и рекламой, начнём с них.</p>
-          </details>
-          <details class="vd-faq-item">
-            <summary>С чего начинается работа?</summary>
-            <p>С разговора о бизнесе, продукте и задаче. Дальше смотрим спрос и вопросы клиентов и предлагаем, какие материалы и инструменты нужны.</p>
-          </details>
-          <details class="vd-faq-item">
-            <summary>Как оценивается результат?</summary>
-            <p>Смотрим обращения и их качество, а также стоимость обращения. Продажи и окупаемость считаем, когда есть данные о сделках, выручке и расходах.</p>
-          </details>
-          <details class="vd-faq-item">
-            <summary>Что нужно от заказчика?</summary>
-            <p>Описание услуги, география работы и доступ к текущему сайту и рекламным кабинетам, если они уже есть. Точный список согласуем на старте.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="vd-band vd-band-dark" id="contact" aria-labelledby="contact-title">
-      <div class="container vd-contact">
-        <div class="vd-contact-copy">
-          <p class="vd-kicker">Старт</p>
-          <h2 class="vd-display" id="contact-title">С чего начнём ваш проект?</h2>
-          <p class="vd-lead">Расскажите о своём бизнесе и задаче. Обсудим, как связать сайт, рекламу и видео под ваше предложение.</p>
-          <ul class="vd-channels">
-            <li><a href="https://t.me/vitalikdoyniak" target="_blank" rel="noopener">Telegram</a></li>
-            <li><a href="mailto:hello@vitalikdoyniak.com">hello@vitalikdoyniak.com</a></li>
+          <ul class="vdp-benefits">
+            <li><h3>Разработка на коде</h3><p>Индивидуальная структура и функциональность под задачи бизнеса.</p></li>
+            <li><h3>Оптимизация загрузки</h3><p>Работаем с кодом, изображениями и загрузкой ресурсов.</p></li>
+            <li><h3>Нужные интеграции</h3><p>Формы, аналитика, CRM, калькуляторы и другие согласованные инструменты.</p></li>
+            <li><h3>Основа для продвижения</h3><p>Готовим страницы для поиска и запуска рекламы.</p></li>
           </ul>
+          <a class="vdp-button" href="#contact" data-direction="site">Обсудить сайт</a>
         </div>
-        <form class="vd-form" id="contact-form" novalidate>
-          <div class="vd-field">
-            <label for="name">Имя</label>
-            <input type="text" id="name" name="name" autocomplete="name" required>
-            <span class="vd-error" id="name-error"></span>
+      </section>
+
+      <section class="vdp-section vdp-dark" id="ads" aria-labelledby="ads-title">
+        <div class="container">
+          <div class="vdp-head">
+            <p class="vdp-eyebrow">02 · Контекстная реклама</p>
+            <h2 class="vdp-title" id="ads-title">Что искал — то и увидел</h2>
+            <p class="vdp-lead">Связываем поисковый запрос, объявление и посадочную страницу одним предложением.</p>
           </div>
-          <div class="vd-field">
-            <label for="contact-channel">Телефон или удобный контакт</label>
-            <input type="text" id="contact-channel" name="contact" autocomplete="tel" required>
-            <span class="vd-error" id="contact-error"></span>
+          <div class="vdp-tabs" role="tablist" aria-label="Примеры рекламных направлений">
+            <button type="button" role="tab" aria-selected="true" aria-controls="ad-demo" id="ad-tab-frame" data-ad="frame">Каркасный дом</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="ad-demo" id="ad-tab-aero" data-ad="aero" tabindex="-1">Дом из газобетона</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="ad-demo" id="ad-tab-brick" data-ad="brick" tabindex="-1">Кирпичный дом</button>
           </div>
-          <div class="vd-field">
-            <label for="direction">Интересующее направление</label>
-            <select id="direction" name="direction" required>
-              <option value="">Выберите направление</option>
-              <option value="site">Сайт</option>
-              <option value="ads">Реклама</option>
-              <option value="video">Видео</option>
-              <option value="complex">Комплекс</option>
-            </select>
-            <span class="vd-error" id="direction-error"></span>
+          <div class="vdp-ad-chain" id="ad-demo" role="tabpanel" aria-labelledby="ad-tab-frame" aria-live="polite">
+            <article class="vdp-chain-card">
+              <span>01 · Запрос</span>
+              <div class="vdp-search"><i aria-hidden="true"></i><strong data-ad-query>Каркасный дом под ключ</strong></div>
+            </article>
+            <b class="vdp-arrow" aria-hidden="true">→</b>
+            <article class="vdp-chain-card vdp-ad-example">
+              <span>02 · Пример объявления</span>
+              <small>Реклама · example.by</small>
+              <h3 data-ad-title>Каркасные дома под ключ</h3>
+              <p>Проектирование и строительство. Обсудите задачу со специалистом.</p>
+            </article>
+            <b class="vdp-arrow" aria-hidden="true">→</b>
+            <article class="vdp-chain-card vdp-landing">
+              <span>03 · Подходящая страница</span>
+              <div class="vdp-house-visual" data-ad-visual="frame" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h3 data-page-title>Каталог каркасных домов</h3>
+              <p data-page-copy>Проекты, варианты комплектации и этапы строительства каркасных домов.</p>
+            </article>
           </div>
-          <div class="vd-field">
-            <label for="message">Короткое описание задачи</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-            <span class="vd-error" id="message-error"></span>
+          <p class="vdp-caption">Человек попадает сразу на нужное направление.</p>
+          <p class="vdp-section-note">Настраиваем Google Ads и Яндекс Директ. Проверяем посадочные страницы и отслеживаем обращения.</p>
+          <a class="vdp-button" href="#contact" data-direction="ads">Обсудить рекламу</a>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-light" id="seo" aria-labelledby="seo-title">
+        <div class="container">
+          <div class="vdp-head">
+            <p class="vdp-eyebrow">03 · SEO</p>
+            <h2 class="vdp-title" id="seo-title">SEO-база уже внутри</h2>
+            <p class="vdp-lead">Закладываем основу для поискового продвижения во время разработки каждой страницы.</p>
           </div>
-          <button type="submit" class="vd-btn">Обсудить проект</button>
-          <p class="vd-form-note" id="form-status" role="status" aria-live="polite"></p>
-        </form>
-      </div>
-    </section>
+          <div class="vdp-seo-layout">
+            <div class="vdp-sitemap" aria-label="Пример структуры сайта">
+              <div class="vdp-node vdp-node-main">Строительство домов</div>
+              <div class="vdp-node-row">
+                <div class="vdp-node">Каркасные дома</div>
+                <div class="vdp-node">Дома из газобетона</div>
+                <div class="vdp-node">Кирпичные дома</div>
+              </div>
+              <div class="vdp-node-row vdp-node-row-small">
+                <div class="vdp-node">Проекты</div><div class="vdp-node">Цены</div><div class="vdp-node">Этапы работ</div>
+              </div>
+            </div>
+            <ul class="vdp-checklist">
+              <li>Структура по поисковому спросу</li><li>Понятные адреса страниц</li>
+              <li>Заголовки и метаданные</li><li>Внутренние ссылки</li>
+              <li>robots.txt, sitemap и canonical</li><li>Мобильная версия и оптимизация загрузки</li>
+              <li>Подходящая структурированная разметка</li><li>Проверка технической доступности для поиска</li>
+              <li>Подключение инструментов вебмастера и аналитики в согласованном объёме</li>
+            </ul>
+          </div>
+          <div class="vdp-seo-stages">
+            <div><span>На старте</span><h3>SEO-база</h3></div>
+            <b aria-hidden="true">→</b>
+            <div><span>После запуска</span><h3>Развитие контента и видимости</h3></div>
+          </div>
+          <details class="vdp-disclosure"><summary>Когда начнёт работать SEO?</summary><p>В конкурентной нише новому сайту может потребоваться длительная работа для роста по основным запросам. Поэтому на старте можем привлекать аудиторию через рекламу, одновременно развивая SEO. Сроки зависят от конкуренции, качества сайта, контента и других факторов.</p></details>
+          <a class="vdp-button" href="#contact" data-direction="seo">Обсудить SEO</a>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-dark" id="video" aria-labelledby="video-title">
+        <div class="container">
+          <div class="vdp-head">
+            <p class="vdp-eyebrow">04 · Видеоконтент</p>
+            <h2 class="vdp-title" id="video-title">Ваш бизнес стоит показать</h2>
+            <p class="vdp-lead">Помогаем клиенту познакомиться с командой, увидеть процесс и понять предложение до первого обращения.</p>
+          </div>
+          <a class="vdp-video-main" href="https://youtube.com/@vitalikdoyniak" target="_blank" rel="noopener" aria-label="Открыть канал Виталика Дойняка на YouTube">
+            <div class="vdp-video-screen">
+              <span>YOUTUBE-КАНАЛ</span>
+              <strong>Люди.<br>Процесс.<br>Результат.</strong>
+              <small>Перейти на канал ↗</small>
+            </div>
+          </a>
+          <div class="vdp-frames">
+            <article><div class="vdp-frame-art vdp-frame-interview"><i></i><i></i></div><h3>Интервью и знакомство</h3></article>
+            <article><div class="vdp-frame-art vdp-frame-process"><i></i><i></i><i></i></div><h3>Процесс и детали</h3></article>
+            <article><div class="vdp-frame-art vdp-frame-drone"><i></i></div><h3>Аэросъёмка объекта</h3></article>
+          </div>
+          <ol class="vdp-production" aria-label="Этапы производства">
+            <li>Вопросы клиентов</li><li>Сценарий</li><li>Съёмка</li><li>Монтаж</li><li>Публикация</li>
+          </ol>
+          <p class="vdp-section-note">Пишем сценарии вокруг реальных вопросов аудитории. Используем основную камеру, action-камеру и дрон по задаче. Монтируем, оформляем публикацию на YouTube и размещаем видео на подходящих страницах сайта.</p>
+          <a class="vdp-button" href="#contact" data-direction="video">Обсудить видео</a>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-light vdp-compact" id="site-youtube" aria-labelledby="site-youtube-title">
+        <div class="container">
+          <div class="vdp-sy-layout">
+            <div>
+              <p class="vdp-eyebrow">Сайт + YouTube</p>
+              <h2 class="vdp-title" id="site-youtube-title">Два источника о вашем бизнесе</h2>
+              <p class="vdp-lead">Публикуем понятные материалы, которые помогают людям изучить тему, познакомиться с компанией и принять решение.</p>
+            </div>
+            <div class="vdp-sy-visual">
+              <article><span>Статья</span><h3>Какой фундамент выбрать для дома?</h3><p>Сравнение решений, условий и этапов.</p></article>
+              <b aria-hidden="true">+</b>
+              <article class="vdp-sy-video"><span>YouTube</span><h3>Фундамент: показываем на объекте</h3><p>Объяснение специалиста и детали процесса.</p></article>
+            </div>
+          </div>
+          <ul class="vdp-inline-points"><li>Отвечаем на реальные вопросы</li><li>Показываем практический опыт</li><li>Связываем видео и страницы сайта</li></ul>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-dark" id="projects" aria-labelledby="projects-title">
+        <div class="container">
+          <div class="vdp-head"><p class="vdp-eyebrow">Портфолио</p><h2 class="vdp-title" id="projects-title">Успешные кейсы</h2></div>
+          <div class="vdp-cases">
+            <article class="vdp-case vdp-case-main">
+              <div class="vdp-case-visual"><span>TOP<br>BUILDING</span><i></i></div>
+              <div class="vdp-case-copy"><span>Сайт · Структура · Контент</span><h3>TOP BUILDING</h3><dl><div><dt>Задача</dt><dd>Представить направления строительства в понятной структуре.</dd></div><div><dt>Что сделали</dt><dd>Подготовили структуру и интерфейс страниц проекта.</dd></div><div><dt>Проверяемый результат</dt><dd>Создан сайт и страницы направлений.</dd></div></dl></div>
+            </article>
+            <article class="vdp-case">
+              <div class="vdp-case-visual vdp-concrete"><i></i><i></i></div>
+              <div class="vdp-case-copy"><span>Сайт · Услуга</span><h3>Бетонные полы</h3><p>Подготовлена подача услуги и структура посадочных страниц.</p><small>Проверяемый результат: созданы материалы для сайта.</small></div>
+            </article>
+            <article class="vdp-case vdp-case-note">
+              <div class="vdp-case-copy"><span>Принцип публикации</span><h3>Только подтверждённые результаты</h3><p>Коммерческие показатели публикуем, когда есть проверяемые данные заказчика.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-review" id="open-review" aria-labelledby="review-title">
+        <div class="container vdp-review-grid">
+          <div><span class="vdp-status">Открытый разбор · В работе</span><h2 class="vdp-title" id="review-title">Не каждый запуск приносит клиентов</h2></div>
+          <div class="vdp-review-copy">
+            <h3>ТопАгроБел — наружные сети и благоустройство для организаций</h3>
+            <p>Продвигаем наружные инженерные сети и благоустройство для промышленных заказчиков. По текущим данным, заказчиков из контекстной рекламы пока нет.</p>
+            <div class="vdp-review-steps"><p><span>Сейчас</span>Проверяем спрос, качество обращений и путь посетителя.</p><p><span>Следующий этап</span>Развитие посадочных страниц и SEO.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-light" id="analytics" aria-labelledby="analytics-title">
+        <div class="container">
+          <div class="vdp-head"><p class="vdp-eyebrow">Аналитика</p><h2 class="vdp-title" id="analytics-title">Считаем обращения, а не только клики</h2><p class="vdp-lead">Отслеживаем, откуда приходят обращения и какие запросы соответствуют вашим услугам. Продажи и окупаемость оцениваем, когда есть данные заказчика.</p></div>
+          <ol class="vdp-funnel"><li><span>01</span>Источник</li><li><span>02</span>Обращение</li><li><span>03</span>Квалифицированный запрос</li><li><span>04</span>Сделка</li></ol>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-dark" id="process" aria-labelledby="process-title">
+        <div class="container">
+          <div class="vdp-head"><p class="vdp-eyebrow">Как мы работаем</p><h2 class="vdp-title" id="process-title">Запускаем поэтапно.<br>Всё связываем сразу.</h2></div>
+          <div class="vdp-step-tabs" role="tablist" aria-label="Этапы запуска">
+            <button type="button" role="tab" aria-selected="true" aria-controls="process-panel-1" id="process-tab-1" data-slide="0"><b>01</b>Бизнес</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-2" id="process-tab-2" data-slide="1" tabindex="-1"><b>02</b>Спрос</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-3" id="process-tab-3" data-slide="2" tabindex="-1"><b>03</b>Сайт</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-4" id="process-tab-4" data-slide="3" tabindex="-1"><b>04</b>Реклама</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-5" id="process-tab-5" data-slide="4" tabindex="-1"><b>05</b>Развитие</button>
+          </div>
+          <div class="vdp-slider" aria-live="polite">
+            <article class="vdp-slide is-active" role="tabpanel" id="process-panel-1" aria-labelledby="process-tab-1" data-process-slide>
+              <div class="vdp-slide-copy"><span>Шаг 01</span><h3>Разбираемся в вашем бизнесе</h3><p>Определяем услуги, заказчиков, географию и преимущества компании.</p></div>
+              <div class="vdp-directions"><div>Каркасные дома</div><div>Газобетон</div><div>Кирпич</div><div>Монолит</div></div>
+            </article>
+            <article class="vdp-slide" role="tabpanel" id="process-panel-2" aria-labelledby="process-tab-2" data-process-slide hidden>
+              <div class="vdp-slide-copy"><span>Шаг 02</span><h3>Проверяем, что ищут клиенты</h3><p>Анализируем запросы в Google и Яндексе и выбираем первое направление для запуска.</p></div>
+              <div class="vdp-query-list"><div>каркасный дом под ключ</div><div class="is-chosen">проекты каркасных домов</div><div>дом из газобетона</div><p>Для примера начинаем с каркасных домов</p></div>
+            </article>
+            <article class="vdp-slide" role="tabpanel" id="process-panel-3" aria-labelledby="process-tab-3" data-process-slide hidden>
+              <div class="vdp-slide-copy"><span>Шаг 03</span><h3>Готовим первое направление</h3><p>Проверяем форму заявки и подключаем аналитику.</p><strong class="vdp-launch-time">Ориентир первого запуска — 2–3 недели<small>Зависит от проекта, готовности материалов и согласований.</small></strong></div>
+              <div class="vdp-page-tree"><div>Главная</div><div>О компании</div><div>Контакты</div><div class="is-chosen">Каркасные дома</div></div>
+            </article>
+            <article class="vdp-slide" role="tabpanel" id="process-panel-4" aria-labelledby="process-tab-4" data-process-slide hidden>
+              <div class="vdp-slide-copy"><span>Шаг 04</span><h3>Запускаем рекламу</h3><p>Проверяем формы и отслеживаем обращения.</p></div>
+              <div class="vdp-mini-chain"><div>«Каркасный дом под ключ»</div><b>→</b><div>«Каркасные дома под ключ»<small>в объявлении</small></div><b>→</b><div>«Каталог каркасных домов»<small>на сайте</small></div><b>→</b><div>Звонок или заявка</div></div>
+            </article>
+            <article class="vdp-slide" role="tabpanel" id="process-panel-5" aria-labelledby="process-tab-5" data-process-slide hidden>
+              <div class="vdp-slide-copy"><span>Шаг 05</span><h3>Первое уже работает — делаем следующее</h3><p>Пока реклама каркасных домов привлекает посетителей, мы готовим остальные направления.</p><strong class="vdp-slide-thought">Не ждём готовности всего сайта, чтобы запустить первое направление.</strong></div>
+              <div class="vdp-progress-cols"><div><span>Уже работает</span><h4>Страница каркасных домов</h4><p>✓ Страница опубликована</p><p>✓ Реклама запущена</p></div><div><span>Следующее направление</span><h4>Страница домов из газобетона</h4><p>Готовим страницу и объявления.</p><small>Далее — кирпичные и монолитные дома по той же схеме.</small></div></div>
+            </article>
+          </div>
+          <div class="vdp-slider-controls">
+            <button class="vdp-slider-arrow" type="button" data-prev aria-label="Предыдущий шаг" disabled>←</button>
+            <span data-counter>Шаг 1 из 5</span>
+            <div class="vdp-dots" aria-label="Выбор шага"><button type="button" class="is-active" data-dot="0" aria-label="Шаг 1" aria-current="step"></button><button type="button" data-dot="1" aria-label="Шаг 2"></button><button type="button" data-dot="2" aria-label="Шаг 3"></button><button type="button" data-dot="3" aria-label="Шаг 4"></button><button type="button" data-dot="4" aria-label="Шаг 5"></button></div>
+            <button class="vdp-slider-arrow" type="button" data-next aria-label="Следующий шаг">→</button>
+          </div>
+          <div class="vdp-always"><p>SEO — при разработке каждой страницы.</p><p>Видео — параллельно работе над сайтом.</p></div>
+          <a class="vdp-button" href="#contact" data-direction="complex">Обсудить первый запуск</a>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-studio" id="studio" aria-labelledby="studio-title">
+        <div class="container vdp-studio-grid">
+          <div class="vdp-owner-photo"><img src="assets/vitalik-hero-bg.webp" alt="Виталик Дойняк" width="1774" height="887" loading="lazy"></div>
+          <div><p class="vdp-eyebrow">О студии</p><h2 class="vdp-title" id="studio-title">Разбираемся в задаче и доводим до запуска</h2><p class="vdp-lead">Сайты, контекстная реклама и видео продумываются совместно.</p><a class="vdp-text-link" href="#contact">Связаться и обсудить задачу →</a></div>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-light" id="faq" aria-labelledby="faq-title">
+        <div class="container vdp-faq-layout">
+          <div><p class="vdp-eyebrow">До старта</p><h2 class="vdp-title" id="faq-title">Вопросы перед стартом</h2></div>
+          <div class="vdp-faq-list">
+            <details><summary>Можно заказать одну услугу?</summary><p>Да. Можно обсудить сайт, рекламу или видео отдельно. Перед началом проверим, как выбранный инструмент связан с остальными.</p></details>
+            <details><summary>Если сайт уже есть?</summary><p>Изучим структуру, содержание, удобство и готовность к рекламе. После этого предложим необходимые изменения.</p></details>
+            <details><summary>Что входит в SEO-базу?</summary><p>Структура страниц, заголовки, метаданные, внутренние ссылки и техническая подготовка к поиску. Точный состав фиксируем перед началом работ.</p></details>
+            <details><summary>Обязательно ли снимать видео?</summary><p>Нет. Видео подключаем, когда оно помогает объяснить продукт, показать работу или снять сомнения клиента.</p></details>
+            <details><summary>Когда можно запустить рекламу?</summary><p>Когда готова подходящая страница, проверены формы и аналитика, подготовлены объявления. Для первого направления ориентир — 2–3 недели, в зависимости от проекта.</p></details>
+            <details><summary>Гарантируете заявки?</summary><p>Число и стоимость обращений зависят от спроса, конкуренции, предложения и рекламного бюджета. Согласуем задачи, отслеживаем данные и улучшаем систему.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="vdp-section vdp-dark" id="contact" aria-labelledby="contact-title">
+        <div class="container vdp-contact-grid">
+          <div><p class="vdp-eyebrow">Контакты</p><h2 class="vdp-title" id="contact-title">С чего начнём ваш проект?</h2><p class="vdp-lead">Расскажите, что продаёте и какую задачу хотите решить.</p><ul class="vdp-contacts"><li><a href="https://t.me/vitalikdoyniak" target="_blank" rel="noopener">Telegram ↗</a></li><li><a href="mailto:hello@vitalikdoyniak.com">hello@vitalikdoyniak.com</a></li></ul></div>
+          <form class="vdp-form" id="contact-form" novalidate>
+            <input type="hidden" id="direction" name="direction" value="complex">
+            <div class="vdp-field"><label for="name">Имя</label><input type="text" id="name" name="name" autocomplete="name" required><span class="vdp-error" id="name-error"></span></div>
+            <div class="vdp-field"><label for="contact-channel">Телефон или Telegram</label><input type="text" id="contact-channel" name="contact" autocomplete="tel" required><span class="vdp-error" id="contact-error"></span></div>
+            <div class="vdp-field"><label for="message">Коротко о задаче</label><textarea id="message" name="message" rows="5" required></textarea><span class="vdp-error" id="message-error"></span></div>
+            <button type="submit" class="vdp-button">Обсудить проект</button>
+            <p class="vdp-form-note" id="form-status" role="status" aria-live="polite">После заполнения откроется письмо в вашей почтовой программе.</p>
+          </form>
+        </div>
+      </section>
+    </div>
     </div>
   </main>
 

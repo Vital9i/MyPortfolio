@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initProjectFilter();
   initContactForm();
+  initAdExamples();
+  initProcessSlider();
   initSystemGears();
   initFooterYear();
   initSmoothScroll();
@@ -96,7 +98,7 @@ function initContactForm() {
     message: { el: form.querySelector('#message'), error: form.querySelector('#message-error') }
   };
   const status = document.getElementById('form-status');
-  const labels = { site: 'Сайт', ads: 'Реклама', video: 'Видео', complex: 'Комплекс' };
+  const labels = { site: 'Сайт', ads: 'Реклама', seo: 'SEO', video: 'Видео', complex: 'Комплекс' };
 
   document.querySelectorAll('[data-direction]').forEach((link) => {
     link.addEventListener('click', () => {
@@ -186,6 +188,148 @@ function clearErrors(fields) {
   });
 }
 
+function initAdExamples() {
+  const tabs = [...document.querySelectorAll('.vdp-tabs [role="tab"]')];
+  const panel = document.getElementById('ad-demo');
+  if (!tabs.length || !panel) return;
+
+  const examples = {
+    frame: {
+      query: 'Каркасный дом под ключ',
+      ad: 'Каркасные дома под ключ',
+      page: 'Каталог каркасных домов',
+      copy: 'Проекты, варианты комплектации и этапы строительства каркасных домов.'
+    },
+    aero: {
+      query: 'Дом из газобетона под ключ',
+      ad: 'Дома из газобетона под ключ',
+      page: 'Каталог домов из газобетона',
+      copy: 'Проекты, варианты планировок и этапы строительства домов из газобетона.'
+    },
+    brick: {
+      query: 'Кирпичный дом под ключ',
+      ad: 'Кирпичные дома под ключ',
+      page: 'Каталог кирпичных домов',
+      copy: 'Проекты, архитектурные решения и этапы строительства кирпичных домов.'
+    }
+  };
+
+  const setExample = (tab, focus = false) => {
+    const data = examples[tab.dataset.ad];
+    if (!data) return;
+    tabs.forEach((item) => {
+      const active = item === tab;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+    });
+    panel.setAttribute('aria-labelledby', tab.id);
+    panel.querySelector('[data-ad-query]').textContent = data.query;
+    panel.querySelector('[data-ad-title]').textContent = data.ad;
+    panel.querySelector('[data-page-title]').textContent = data.page;
+    panel.querySelector('[data-page-copy]').textContent = data.copy;
+    panel.querySelector('[data-ad-visual]').dataset.adVisual = tab.dataset.ad;
+    if (focus) tab.focus();
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => setExample(tab));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+      if (event.key === 'Home') next = 0;
+      if (event.key === 'End') next = tabs.length - 1;
+      setExample(tabs[next], true);
+    });
+  });
+}
+
+function initProcessSlider() {
+  const slider = document.querySelector('.vdp-slider');
+  const slides = [...document.querySelectorAll('[data-process-slide]')];
+  const tabs = [...document.querySelectorAll('.vdp-step-tabs [role="tab"]')];
+  const dots = [...document.querySelectorAll('[data-dot]')];
+  const previous = document.querySelector('[data-prev]');
+  const next = document.querySelector('[data-next]');
+  const counter = document.querySelector('[data-counter]');
+  if (!slider || slides.length !== 5 || tabs.length !== slides.length || !previous || !next || !counter) return;
+
+  let current = 0;
+  const focusableSelector = 'a, button, input, textarea, select, [tabindex]';
+
+  const show = (index, focusTab = false) => {
+    current = Math.max(0, Math.min(slides.length - 1, index));
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === current;
+      slide.hidden = !active;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      slide.querySelectorAll(focusableSelector).forEach((element) => {
+        if (!active) {
+          if (!element.hasAttribute('data-vdp-tabindex')) {
+            element.setAttribute('data-vdp-tabindex', element.getAttribute('tabindex') || '');
+          }
+          element.tabIndex = -1;
+        } else if (element.hasAttribute('data-vdp-tabindex')) {
+          const saved = element.getAttribute('data-vdp-tabindex');
+          if (saved === '') element.removeAttribute('tabindex');
+          else element.setAttribute('tabindex', saved);
+          element.removeAttribute('data-vdp-tabindex');
+        }
+      });
+    });
+    tabs.forEach((tab, tabIndex) => {
+      const active = tabIndex === current;
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === current;
+      dot.classList.toggle('is-active', active);
+      if (active) dot.setAttribute('aria-current', 'step');
+      else dot.removeAttribute('aria-current');
+    });
+    previous.disabled = current === 0;
+    next.disabled = current === slides.length - 1;
+    counter.textContent = `Шаг ${current + 1} из ${slides.length}`;
+    if (focusTab) tabs[current].focus();
+  };
+
+  tabs.forEach((tab, tabIndex) => {
+    tab.addEventListener('click', () => show(tabIndex));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let target = current;
+      if (event.key === 'ArrowLeft') target = Math.max(0, current - 1);
+      if (event.key === 'ArrowRight') target = Math.min(slides.length - 1, current + 1);
+      if (event.key === 'Home') target = 0;
+      if (event.key === 'End') target = slides.length - 1;
+      show(target, true);
+    });
+  });
+  dots.forEach((dot) => dot.addEventListener('click', () => show(Number(dot.dataset.dot))));
+  previous.addEventListener('click', () => show(current - 1));
+  next.addEventListener('click', () => show(current + 1));
+
+  let touchX = 0;
+  let touchY = 0;
+  slider.addEventListener('touchstart', (event) => {
+    touchX = event.changedTouches[0].clientX;
+    touchY = event.changedTouches[0].clientY;
+  }, { passive: true });
+  slider.addEventListener('touchend', (event) => {
+    const deltaX = event.changedTouches[0].clientX - touchX;
+    const deltaY = event.changedTouches[0].clientY - touchY;
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY) * 1.25) return;
+    show(deltaX < 0 ? current + 1 : current - 1);
+  }, { passive: true });
+
+  show(0);
+}
+
 function initFooterYear() {
   const el = document.getElementById('year');
   if (el) el.textContent = String(new Date().getFullYear());
@@ -234,8 +378,8 @@ function initSystemGears() {
 
   const NS = 'http://www.w3.org/2000/svg';
   const PI = Math.PI;
-  const m = 10;
-  const ha = 0.88;
+  const m = 17;
+  const ha = 0.52;
 
   const svgEl = (name, attrs) => {
     const node = document.createElementNS(NS, name);
@@ -259,13 +403,14 @@ function initSystemGears() {
     return [[mx + rx, my + ry], [mx - rx, my - ry]];
   };
 
-  const zA = 17;
-  const zVid = 12;
-  const zS = 19;
-  const zBiz = 30;
-  const zSeo = 12;
-  const zVd = 24;
-  const Las = 20.06;
+  const zA = 10;
+  const zVid = 7;
+  const zS = 11;
+  const zBiz = 18;
+  const zSeo = 7;
+  const zVd = 14;
+  // Closes the ads → video → site → SEO → ads loop on an exact tooth phase.
+  const Las = 12.0881892369;
   const site = [Las * Math.cos((36 * PI) / 180), Las * Math.sin((36 * PI) / 180)];
   const origin = [0, 0];
   const side = (ax, ay, px, py) => ax * py - ay * px;
@@ -315,7 +460,7 @@ function initSystemGears() {
   const gears = [
     { id: 'seo', z: zSeo, sign: -1, tone: 'light', label: 'SEO', icon: 'search', service: true, caption: 'Помогает находить сайт в поиске' },
     { id: 'video', z: zVid, sign: -1, tone: 'light', label: 'ВИДЕО', icon: 'play', service: true, caption: 'Показывает продукт и создаёт доверие' },
-    { id: 'ads', z: zA, sign: 1, tone: 'light', label: 'РЕКЛАМА', icon: 'target', service: true, caption: 'Приводит людей, которые ищут вашу услугу' },
+    { id: 'ads', z: zA, sign: 1, tone: 'light', label: 'КОНТЕКСТНАЯ РЕКЛАМА', rows: ['КОНТЕКСТНАЯ', 'РЕКЛАМА'], icon: 'target', service: true, caption: 'Приводит людей, которые ищут вашу услугу' },
     { id: 'site', z: zS, sign: 1, tone: 'light', label: 'САЙТ', icon: 'browser', service: true, caption: 'Отвечает на вопросы и помогает оставить заявку' },
     { id: 'vd', z: zVd, sign: -1, tone: 'lime', label: 'VD Group', icon: '', wordmark: true, service: false },
     { id: 'biz', z: zBiz, sign: -1, tone: 'lime', label: 'БИЗНЕС', icon: 'chart', service: false, sub: 'Обращения → Продажи' }
@@ -330,67 +475,63 @@ function initSystemGears() {
     g.hubR = g.ra * (g.z <= 12 ? 0.64 : 0.58);
   });
 
-  const route = {
-    ads: ['ads', 'video', 'site', 'biz'],
-    video: ['video', 'site', 'biz'],
-    site: ['site', 'biz'],
-    seo: ['seo', 'site', 'biz']
-  };
-
-  const gearPath = (z) => {
-    const rp = (z * m) / 2;
-    const toothSize = 13;
-    const halfW = toothSize / 2 - 0.35;
-    const addendum = (toothSize - 0.8) / 2;
-    const ra = rp + addendum;
-    const rd = ra - toothSize;
-    const xRoot = Math.sqrt(Math.max(1, rd * rd - halfW * halfW));
-    const xTip = Math.sqrt(Math.max(1, ra * ra - halfW * halfW));
-    const pitch = (2 * PI) / z;
-    const aRootL = Math.atan2(-halfW, xRoot);
-    const aRootR = Math.atan2(halfW, xRoot);
-    const tooth = [
-      [xRoot, -halfW],
-      [xTip, -halfW],
-      [xTip, halfW],
-      [xRoot, halfW]
-    ];
-    const gapSteps = 4;
-    for (let i = 1; i <= gapSteps; i += 1) {
-      const a = aRootR + (pitch + aRootL - aRootR) * (i / gapSteps);
-      tooth.push([rd * Math.cos(a), rd * Math.sin(a)]);
-    }
-    const all = [];
-    for (let k = 0; k < z; k += 1) {
-      const a = k * pitch;
+  const gearPath = (radius, teeth) => {
+    const rootR = radius - 17.2;
+    const pitch = (2 * PI) / teeth;
+    const points = [];
+    const addPolar = (r, a) => points.push([r * Math.cos(a), -r * Math.sin(a)]);
+    const addLocal = (x, y, a) => {
       const c = Math.cos(a);
       const s = Math.sin(a);
-      tooth.forEach((p, index) => {
-        if (k > 0 && index === 0) return;
-        all.push([p[0] * c - p[1] * s, p[0] * s + p[1] * c]);
-      });
+      points.push([x * c + y * s, -x * s + y * c]);
+    };
+    const halfTip = Math.min(15, radius * Math.sin(pitch * 0.21));
+    const halfNeck = halfTip + Math.min(2.4, radius * 0.016);
+    for (let tooth = 0; tooth < teeth; tooth += 1) {
+      const a = tooth * pitch;
+      addPolar(rootR, a - pitch * 0.5);
+      addPolar(rootR, a - pitch * 0.3);
+      addLocal(rootR, -halfNeck, a);
+      addLocal(radius - 1.8, -halfTip, a);
+      addLocal(radius, -halfTip + 1.8, a);
+      addLocal(radius, halfTip - 1.8, a);
+      addLocal(radius - 1.8, halfTip, a);
+      addLocal(rootR, halfNeck, a);
+      addPolar(rootR, a + pitch * 0.3);
     }
-    let d = '';
-    all.forEach((p, index) => {
-      d += `${index === 0 ? 'M' : 'L'}${p[0].toFixed(2)} ${(-p[1]).toFixed(2)} `;
-    });
+    const corner = Math.max(1.8, Math.min(3.5, radius * 0.02));
+    const toward = (from, to, distance) => {
+      const dx = to[0] - from[0];
+      const dy = to[1] - from[1];
+      const length = Math.hypot(dx, dy) || 1;
+      const amount = Math.min(distance, length * 0.34) / length;
+      return [from[0] + dx * amount, from[1] + dy * amount];
+    };
+    const before = points.map((p, i) => toward(p, points[(i - 1 + points.length) % points.length], corner));
+    const after = points.map((p, i) => toward(p, points[(i + 1) % points.length], corner));
+    const xy = (p) => `${p[0].toFixed(2)} ${p[1].toFixed(2)}`;
+    let d = `M${xy(before[0])} Q${xy(points[0])} ${xy(after[0])} `;
+    for (let i = 1; i < points.length; i += 1) {
+      d += `L${xy(before[i])} Q${xy(points[i])} ${xy(after[i])} `;
+    }
     return `${d}Z`;
   };
 
-  const paths = {};
   gears.forEach((g) => {
-    if (!paths[g.z]) paths[g.z] = gearPath(g.z);
+    g.path = gearPath(g.ra, g.z);
   });
 
+  const shiftX = 7;
+  const shiftY = 12;
   let minX = Infinity;
   let minY = Infinity;
   let maxX = -Infinity;
   let maxY = -Infinity;
   gears.forEach((g) => {
-    minX = Math.min(minX, g.cx - g.ra);
-    minY = Math.min(minY, g.cy - g.ra);
-    maxX = Math.max(maxX, g.cx + g.ra);
-    maxY = Math.max(maxY, g.cy + g.ra);
+    minX = Math.min(minX, g.cx - g.ra - 6);
+    minY = Math.min(minY, g.cy - g.ra - 6);
+    maxX = Math.max(maxX, g.cx + g.ra + shiftX + 16);
+    maxY = Math.max(maxY, g.cy + g.ra + shiftY + 18);
   });
   const pad = 22;
   const vbW = maxX - minX + pad * 2;
@@ -402,21 +543,69 @@ function initSystemGears() {
     id: 'sys-gear-shadow',
     x: '-20%',
     y: '-20%',
-    width: '150%',
-    height: '160%',
+    width: '170%',
+    height: '185%',
     'color-interpolation-filters': 'sRGB'
   });
   filter.appendChild(svgEl('feDropShadow', {
-    dx: '0',
-    dy: '5',
-    stdDeviation: '2.2',
+    dx: '9',
+    dy: '16',
+    stdDeviation: '6.5',
     'flood-color': '#000000',
-    'flood-opacity': '0.4'
+    'flood-opacity': '0.36'
   }));
   defs.appendChild(filter);
+  const addGradient = (id, stops) => {
+    const gradient = svgEl('linearGradient', {
+      id,
+      x1: '0',
+      y1: '0',
+      x2: '1',
+      y2: '1'
+    });
+    stops.forEach(([offset, color]) => {
+      gradient.appendChild(svgEl('stop', { offset, 'stop-color': color }));
+    });
+    defs.appendChild(gradient);
+  };
+  addGradient('sys-face-light', [
+    ['0', '#fffef9'],
+    ['0.48', '#ebe8df'],
+    ['1', '#c9c4b8']
+  ]);
+  addGradient('sys-face-lime', [
+    ['0', '#edff00'],
+    ['0.5', '#d7ed00'],
+    ['1', '#aebe00']
+  ]);
+  addGradient('sys-hub-dark', [
+    ['0', '#292925'],
+    ['0.5', '#191917'],
+    ['1', '#090908']
+  ]);
   svg.appendChild(defs);
 
-  const stage = svgEl('g', { 'aria-hidden': 'true' });
+  const lightSides = [
+    { dx: 8, dy: 13, fill: '#7f7b72' },
+    { dx: 5, dy: 8.2, fill: '#a29e94' },
+    { dx: 2.2, dy: 3.6, fill: '#c8c4ba' }
+  ];
+  const limeSides = [
+    { dx: 8, dy: 13, fill: '#738000' },
+    { dx: 5, dy: 8.2, fill: '#9aae00' },
+    { dx: 2.2, dy: 3.6, fill: '#c0d200' }
+  ];
+  const stage = svgEl('g', { 'aria-hidden': 'true', 'pointer-events': 'none' });
+  const depthStage = svgEl('g');
+  const faceStage = svgEl('g');
+  const sparkStage = svgEl('g', {
+    class: 'gear-sparks',
+    'aria-hidden': 'true',
+    'pointer-events': 'none'
+  });
+  stage.appendChild(depthStage);
+  stage.appendChild(faceStage);
+  stage.appendChild(sparkStage);
   const ui = svgEl('g');
   svg.appendChild(stage);
   svg.appendChild(ui);
@@ -464,30 +653,48 @@ function initSystemGears() {
   };
 
   gears.forEach((g) => {
-    const ink = g.tone === 'lime' ? '#d2e600' : '#e8e6df';
-    const wall = g.tone === 'lime' ? '#8d9c00' : '#9a968c';
-    const spin = svgEl('g', {
+    const ink = '#f1efe8';
+    const depthSpin = svgEl('g', {
       filter: 'url(#sys-gear-shadow)',
       transform: `translate(${g.cx.toFixed(2)} ${g.cy.toFixed(2)})`
     });
-    const wallRotor = svgEl('g');
+    const faceSpin = svgEl('g', {
+      transform: `translate(${g.cx.toFixed(2)} ${g.cy.toFixed(2)})`
+    });
+    g.depthGroup = depthSpin;
+    g.faceGroup = faceSpin;
+    const sides = g.tone === 'lime' ? limeSides : lightSides;
+    g.extrude = sides.map((layer) => {
+      const rotor = svgEl('g');
+      rotor.appendChild(svgEl('path', { d: g.path, fill: layer.fill }));
+      depthSpin.appendChild(rotor);
+      return { rotor, dx: layer.dx, dy: layer.dy };
+    });
     const faceRotor = svgEl('g', { class: 'gear-rotor' });
-    wallRotor.appendChild(svgEl('path', { d: paths[g.z], fill: wall }));
-    const face = svgEl('path', { d: paths[g.z], class: `gear-face tone-${g.tone}` });
+    const face = svgEl('path', {
+      d: g.path,
+      class: `gear-face tone-${g.tone}`,
+      fill: `url(#sys-face-${g.tone})`
+    });
     faceRotor.appendChild(face);
-    spin.appendChild(wallRotor);
-    spin.appendChild(faceRotor);
-    stage.appendChild(spin);
-    g.wallRotor = wallRotor;
+    faceSpin.appendChild(faceRotor);
+    depthStage.appendChild(depthSpin);
+    faceStage.appendChild(faceSpin);
     g.faceRotor = faceRotor;
     g.face = face;
 
     const hub = svgEl('g', { transform: `translate(${g.cx.toFixed(2)} ${g.cy.toFixed(2)})` });
     hub.appendChild(svgEl('circle', {
+      cx: '2.4',
+      cy: '3.6',
+      r: g.hubR.toFixed(2),
+      fill: '#050504'
+    }));
+    hub.appendChild(svgEl('circle', {
       cx: '0',
       cy: '0',
       r: g.hubR.toFixed(2),
-      fill: '#141412',
+      fill: 'url(#sys-hub-dark)',
       class: 'gear-hub-disk'
     }));
     let icon = null;
@@ -505,10 +712,10 @@ function initSystemGears() {
       y: (g.wordmark ? 0 : g.hubR * (g.sub ? 0.08 : 0.28)).toFixed(2),
       'text-anchor': 'middle',
       'dominant-baseline': 'middle',
-      fill: g.wordmark ? '#e8e6df' : ink,
-      'font-family': g.wordmark ? 'Manrope, sans-serif' : 'Oswald, sans-serif',
+      fill: ink,
+      'font-family': 'Oswald, sans-serif',
       'font-weight': g.wordmark ? '700' : '600',
-      'letter-spacing': g.wordmark ? '-0.03em' : (g.z <= 12 ? '0' : '0.02em')
+      'letter-spacing': g.wordmark ? '0.04em' : (g.z <= 12 ? '0' : '0.02em')
     });
     name.textContent = g.label;
     hub.appendChild(name);
@@ -557,6 +764,249 @@ function initSystemGears() {
   });
   gears.forEach((g) => ui.appendChild(g.hub));
 
+  const setGearStage = (g, dx = 0, dy = 0, scale = 1, opacity = 1) => {
+    const transform = `translate(${(g.cx + dx).toFixed(2)} ${(g.cy + dy).toFixed(2)}) scale(${scale.toFixed(4)})`;
+    g.depthGroup.setAttribute('transform', transform);
+    g.faceGroup.setAttribute('transform', transform);
+    g.hub.setAttribute('transform', transform);
+    [g.depthGroup, g.faceGroup, g.hub].forEach((group) => {
+      group.setAttribute('opacity', opacity.toFixed(3));
+    });
+  };
+
+  const crackSvg = svgEl('svg', {
+    class: 'system-impact-cracks',
+    viewBox: '0 0 1200 600',
+    preserveAspectRatio: 'none',
+    'aria-hidden': 'true',
+    focusable: 'false'
+  });
+  const crackPaths = [
+    'M830 185 L850 150 L860 120 M860 120 L840 100 L820 82 M860 120 L890 100 L915 82 M860 120 L830 128 L820 128 M860 120 L890 128 L915 128',
+    'M700 190 L665 150 L630 120 M630 120 L608 101 L590 90 M630 120 L630 105 M630 120 L610 125',
+    'M690 395 L620 418 L520 430 M520 430 L480 435 L450 440 M520 430 L520 465 M520 430 L455 462 L400 490',
+    'M850 400 L900 430 L950 455 M950 455 L930 465 L920 475 M950 455 L990 472 L1020 490 M950 455 L1020 490 L1080 530'
+  ].map((d, index) => {
+    const path = svgEl('path', {
+      d,
+      pathLength: '1',
+      class: `system-impact-crack crack-${index + 1}`
+    });
+    crackSvg.appendChild(path);
+    return path;
+  });
+  const branchTags = [
+    [
+      { x: 790, y: 48, w: 60, label: 'HTML5', color: '#f06a3a', stem: [820, 82] },
+      { x: 889, y: 48, w: 52, label: 'CSS3', color: '#48a7e8', stem: [915, 82] },
+      { x: 780, y: 100, w: 80, label: 'JavaScript', color: '#f1dc55', stem: [820, 128] },
+      { x: 885, y: 100, w: 60, label: 'React', color: '#68d5ea', stem: [915, 128] }
+    ],
+    [
+      { x: 520, y: 35, w: 70, label: 'YouTube', color: '#ff5a61', stem: [590, 90] },
+      { x: 620, y: 65, w: 42, label: 'DJI', color: '#dddcd5', stem: [630, 105] },
+      { x: 540, y: 110, w: 62, label: 'CapCut', color: '#b5f0e9', stem: [610, 125] }
+    ],
+    [
+      { x: 370, y: 415, w: 82, label: 'Google Ads', color: '#74a8ff', stem: [450, 440] },
+      { x: 466, y: 445, w: 108, label: 'Яндекс Директ', color: '#ff6a58', stem: [520, 465] },
+      { x: 300, y: 480, w: 148, label: 'Видеореклама YouTube', color: '#ff5a61', stem: [400, 490] }
+    ],
+    [
+      { x: 840, y: 455, w: 108, label: 'Search Console', color: '#74a8ff', stem: [920, 475] },
+      { x: 956, y: 470, w: 128, label: 'Яндекс Вебмастер', color: '#ff6a58', stem: [1020, 490] },
+      { x: 1036, y: 510, w: 88, label: 'Schema.org', color: '#d5eb00', stem: [1080, 530] }
+    ]
+  ];
+  const crackLeaves = branchTags.map((tags, branchIndex) => tags.map((tag) => {
+    const group = svgEl('g', { class: `system-branch-tag branch-${branchIndex + 1}` });
+    const tagX = tag.x + tag.w / 2;
+    const tagY = tag.y + 10;
+    group.appendChild(svgEl('path', {
+      d: `M${tag.stem[0]} ${tag.stem[1]} Q${tag.stem[0]} ${tagY} ${tagX} ${tagY}`,
+      class: 'system-branch-stem',
+      stroke: tag.color
+    }));
+    group.appendChild(svgEl('circle', {
+      cx: tag.stem[0],
+      cy: tag.stem[1],
+      r: '2.2',
+      fill: tag.color,
+      class: 'system-branch-bud'
+    }));
+    group.appendChild(svgEl('rect', {
+      x: tag.x,
+      y: tag.y,
+      width: tag.w,
+      height: '20',
+      rx: '10',
+      class: 'system-branch-label',
+      stroke: tag.color
+    }));
+    const text = svgEl('text', {
+      x: tagX,
+      y: tagY + 0.5,
+      'text-anchor': 'middle',
+      'dominant-baseline': 'middle',
+      fill: tag.color,
+      class: 'system-branch-text'
+    });
+    text.textContent = tag.label;
+    group.appendChild(text);
+    crackSvg.appendChild(group);
+    return group;
+  }));
+  section.insertBefore(crackSvg, section.firstChild);
+
+  const introPlan = {
+    vd: { start: 0.08, duration: 0.62, mode: 'perspective' },
+    site: { start: 0.68, duration: 0.4, mode: 'perspective', crack: 0 },
+    video: { start: 1.04, duration: 0.4, mode: 'perspective', crack: 1 },
+    ads: { start: 1.4, duration: 0.4, mode: 'perspective', crack: 2 },
+    seo: { start: 1.76, duration: 0.4, mode: 'perspective', crack: 3 }
+  };
+  const introDuration = 2.32;
+  const clamp01 = (value) => Math.max(0, Math.min(1, value));
+  const easeOutCubic = (value) => 1 - Math.pow(1 - value, 3);
+  const paintCracks = (seconds) => {
+    Object.values(introPlan).forEach((plan) => {
+      if (plan.crack === undefined) return;
+      const start = plan.start + plan.duration * 0.7;
+      const progress = easeOutCubic(clamp01((seconds - start) / 0.24));
+      crackPaths[plan.crack].style.strokeDashoffset = String(1 - progress);
+      crackLeaves[plan.crack].forEach((leaf, index) => {
+        const leafProgress = easeOutCubic(clamp01((seconds - start - 0.07 - index * 0.035) / 0.22));
+        leaf.style.opacity = String(leafProgress * 0.9);
+        leaf.setAttribute('transform', `translate(0 ${(1 - leafProgress) * 6})`);
+      });
+    });
+  };
+  const paintIntro = (seconds) => {
+    gears.forEach((g) => {
+      if (g.id === 'biz') {
+        setGearStage(g);
+        return;
+      }
+      const plan = introPlan[g.id];
+      const progress = clamp01((seconds - plan.start) / plan.duration);
+      if (plan.mode === 'perspective') {
+        const eased = easeOutCubic(progress);
+        const depth = g.id === 'vd' ? 1.55 : 1.32;
+        const travel = g.id === 'vd' ? Math.max(125, g.ra * 0.72) : Math.max(105, g.ra * 0.6);
+        setGearStage(g, 0, (1 - eased) * travel, 1 + (1 - eased) * depth, eased);
+      }
+    });
+    paintCracks(seconds);
+  };
+
+  const finishIntro = () => {
+    gears.forEach((g) => setGearStage(g));
+    crackPaths.forEach((path) => {
+      path.style.strokeDashoffset = '0';
+    });
+    crackLeaves.flat().forEach((leaf) => {
+      leaf.style.opacity = '0.9';
+      leaf.setAttribute('transform', 'translate(0 0)');
+    });
+  };
+
+  const sparkPairs = [
+    ['vd', 'ads'],
+    ['ads', 'video'],
+    ['video', 'site'],
+    ['ads', 'seo'],
+    ['seo', 'site'],
+    ['site', 'biz']
+  ];
+  const wrapTurn = (value) => ((value % (2 * PI)) + 2 * PI) % (2 * PI);
+  const sparks = sparkPairs.map(([fromId, toId]) => {
+    const from = byId[fromId];
+    const to = byId[toId];
+    const dx = to.cx - from.cx;
+    const dy = to.cy - from.cy;
+    const distance = Math.hypot(dx, dy);
+    const pitchRadius = (from.z * m) / 2;
+    const toPitchRadius = (to.z * m) / 2;
+    const contactX = from.cx + (dx / distance) * pitchRadius;
+    const contactY = from.cy + (dy / distance) * pitchRadius;
+    const tangentX = -dy / distance;
+    const tangentY = dx / distance;
+    const exitDistance = Math.max(
+      Math.sqrt(Math.max(0, from.ra * from.ra - pitchRadius * pitchRadius)),
+      Math.sqrt(Math.max(0, to.ra * to.ra - toPitchRadius * toPitchRadius))
+    ) + 1.5;
+    const clearance = (direction) => {
+      const px = contactX + tangentX * direction * (exitDistance + 8);
+      const py = contactY + tangentY * direction * (exitDistance + 8);
+      return gears.reduce((best, gear) => {
+        if (gear.id === fromId || gear.id === toId) return best;
+        return Math.min(best, Math.hypot(px - gear.cx, py - gear.cy) - gear.ra);
+      }, Infinity);
+    };
+    const direction = clearance(1) >= clearance(-1) ? 1 : -1;
+    const x = contactX + tangentX * direction * exitDistance;
+    const y = contactY + tangentY * direction * exitDistance;
+    const mathPhi = aim(math[fromId], math[toId]);
+    const offset = wrapTurn(-from.sign * from.z * (from.th0 - mathPhi));
+    const angle = (Math.atan2(tangentY * direction, tangentX * direction) * 180) / PI + 90;
+    const group = svgEl('g', {
+      transform: `translate(${x.toFixed(2)} ${y.toFixed(2)}) rotate(${angle.toFixed(2)})`
+    });
+    const particleSpecs = [
+      { delay: 0, travel: 28, lateral: -5, tilt: -16, length: 7, color: '#fffde9', width: 1.4 },
+      { delay: 0.06, travel: 35, lateral: 2, tilt: 9, length: 8, color: '#eaff62', width: 1.2 },
+      { delay: 0.12, travel: 24, lateral: 6, tilt: 24, length: 5, color: '#ffffff', width: 1 },
+      { delay: 0.2, travel: 31, lateral: -2, dot: 0.9, color: '#f5ffad' }
+    ];
+    const particles = particleSpecs.map((spec) => {
+      const node = spec.dot
+        ? svgEl('circle', { cx: '0', cy: '0', r: spec.dot, fill: spec.color, opacity: '0' })
+        : svgEl('path', {
+          d: `M0 0 L0 ${(-spec.length).toFixed(2)}`,
+          fill: 'none',
+          stroke: spec.color,
+          'stroke-width': spec.width,
+          'stroke-linecap': 'round',
+          opacity: '0'
+        });
+      group.appendChild(node);
+      return { node, ...spec };
+    });
+    sparkStage.appendChild(group);
+    return { group, offset, particles };
+  });
+
+  const hideSparks = () => {
+    sparks.forEach((spark) => {
+      spark.particles.forEach((particle) => particle.node.setAttribute('opacity', '0'));
+    });
+  };
+
+  const paintSparks = (u) => {
+    sparks.forEach((spark) => {
+      const delta = Math.atan2(Math.sin(u - spark.offset), Math.cos(u - spark.offset));
+      const width = 0.48;
+      const active = Math.abs(delta) <= width;
+      const eventProgress = (delta + width) / (2 * width);
+      spark.particles.forEach((particle) => {
+        const progress = (eventProgress - particle.delay) / (1 - particle.delay);
+        if (!active || progress < 0 || progress > 1) {
+          particle.node.setAttribute('opacity', '0');
+          return;
+        }
+        const life = Math.pow(Math.sin(progress * PI), 0.72);
+        const opacity = life * (1 - progress * 0.55);
+        const lateral = particle.lateral * (0.25 + progress);
+        const travel = 2 + particle.travel * progress;
+        particle.node.setAttribute('opacity', opacity.toFixed(3));
+        particle.node.setAttribute(
+          'transform',
+          `translate(${lateral.toFixed(2)} ${(-travel).toFixed(2)}) rotate(${particle.tilt || 0})`
+        );
+      });
+    });
+  };
+
   const fitType = () => {
     const width = svg.getBoundingClientRect().width;
     if (width < 8) return;
@@ -564,36 +1014,46 @@ function initSystemGears() {
     gears.forEach((g) => {
       const budget = g.hubR * (g.wordmark ? 1.7 : 1.62);
       if (g.wordmark) {
-        let markUser = g.hubR * 0.34;
+        let markUser = g.hubR * 0.58;
         g.nameEl.replaceChildren();
-        g.nameEl.textContent = g.label;
-        g.nameEl.setAttribute('font-size', markUser.toFixed(2));
-        const markLen = g.nameEl.getComputedTextLength();
-        if (markLen > budget && markLen > 0) markUser *= budget / markLen;
-        if (markUser * scale >= 12) {
-          g.nameEl.textContent = g.label;
-          g.nameEl.setAttribute('font-size', markUser.toFixed(2));
-          g.nameEl.setAttribute('y', '0');
-          return;
-        }
-        g.nameEl.textContent = '';
-        ['VD', 'Group'].forEach((row, index) => {
-          const span = svgEl('tspan', { x: '0', dy: index === 0 ? '0' : '1.05em' });
+        ['VD', 'GROUP'].forEach((row, index) => {
+          const span = svgEl('tspan', {
+            x: '0',
+            y: index === 0 ? (-g.hubR * 0.12).toFixed(2) : (g.hubR * 0.27).toFixed(2),
+            'font-size': index === 0 ? '1em' : '0.38em',
+            'letter-spacing': index === 0 ? '0.02em' : '0.24em'
+          });
           span.textContent = row;
           g.nameEl.appendChild(span);
         });
-        markUser = Math.max(markUser * 1.7, 12 / scale);
         g.nameEl.setAttribute('font-size', markUser.toFixed(2));
         const spans = [...g.nameEl.querySelectorAll('tspan')];
         const longest = Math.max(...spans.map((span) => span.getComputedTextLength()));
         if (longest > budget && longest > 0) markUser *= budget / longest;
         g.nameEl.setAttribute('font-size', markUser.toFixed(2));
-        g.nameEl.setAttribute('y', (-g.hubR * 0.22).toFixed(2));
+        g.nameEl.setAttribute('y', '0');
         return;
       }
       const screen = Math.min(g.sub ? 24 : 16, Math.max(11, g.hubR * scale * 0.34));
       let user = screen / scale;
       g.nameEl.replaceChildren();
+      if (g.rows) {
+        g.rows.forEach((row, index) => {
+          const span = svgEl('tspan', {
+            x: '0',
+            y: (g.hubR * (index === 0 ? 0.19 : 0.42)).toFixed(2)
+          });
+          span.textContent = row;
+          g.nameEl.appendChild(span);
+        });
+        g.nameEl.setAttribute('font-size', user.toFixed(2));
+        const longestRow = Math.max(...[...g.nameEl.querySelectorAll('tspan')].map((span) => span.getComputedTextLength()));
+        if (longestRow > budget && longestRow > 0) {
+          user *= budget / longestRow;
+          g.nameEl.setAttribute('font-size', user.toFixed(2));
+        }
+        return;
+      }
       g.nameEl.textContent = g.label;
       g.nameEl.setAttribute('font-size', user.toFixed(2));
       const length = g.nameEl.getComputedTextLength();
@@ -636,8 +1096,11 @@ function initSystemGears() {
     gears.forEach((g) => {
       const deg = -(((g.th0 + (g.sign * u) / g.z) * 180) / PI);
       const turn = deg.toFixed(4);
-      g.faceRotor.setAttribute('transform', `rotate(${turn})`);
-      g.wallRotor.setAttribute('transform', `translate(0 5) rotate(${turn})`);
+      const spinTurn = `rotate(${turn})`;
+      g.faceRotor.setAttribute('transform', spinTurn);
+      g.extrude.forEach((layer) => {
+        layer.rotor.setAttribute('transform', `translate(${layer.dx} ${layer.dy}) ${spinTurn}`);
+      });
     });
   };
 
@@ -655,17 +1118,21 @@ function initSystemGears() {
 
   const paint = () => {
     const id = shown();
+    const activeBranch = { site: 0, video: 1, ads: 2, seo: 3 }[id];
     gears.forEach((g) => {
       g.face.classList.remove('is-hot', 'is-path');
       if (g.hit) g.hit.setAttribute('aria-expanded', 'false');
+    });
+    crackPaths.forEach((path, index) => {
+      path.classList.toggle('is-active', index === activeBranch);
+    });
+    crackLeaves.forEach((leaves, index) => {
+      leaves.forEach((leaf) => leaf.classList.toggle('is-active', index === activeBranch));
     });
     if (!id) {
       caption.textContent = '';
       return;
     }
-    route[id].forEach((rid) => {
-      if (rid !== id) byId[rid].face.classList.add('is-path');
-    });
     byId[id].face.classList.add('is-hot');
     if (byId[id].hit) byId[id].hit.setAttribute('aria-expanded', 'true');
     caption.textContent = byId[id].caption;
@@ -726,12 +1193,18 @@ function initSystemGears() {
   let raf = 0;
   let running = false;
   let onScreen = false;
+  let introElapsed = 0;
+  let introComplete = reduced.matches;
+
+  if (introComplete) finishIntro();
+  else paintIntro(0);
 
   const stop = () => {
     running = false;
     if (raf) cancelAnimationFrame(raf);
     raf = 0;
     last = 0;
+    hideSparks();
   };
 
   const frame = (now) => {
@@ -739,9 +1212,21 @@ function initSystemGears() {
     if (!last) last = now;
     const dt = Math.min(48, now - last);
     last = now;
-    phase += (dt / 8400) * 2 * PI;
+    if (!introComplete) {
+      introElapsed += dt / 1000;
+      paintIntro(introElapsed);
+      if (introElapsed >= introDuration) {
+        introComplete = true;
+        finishIntro();
+        last = now;
+      }
+      raf = requestAnimationFrame(frame);
+      return;
+    }
+    phase += (dt / 2100) * 2 * PI;
     if (phase > PI * 2) phase -= PI * 2;
     apply(phase);
+    paintSparks(phase);
     raf = requestAnimationFrame(frame);
   };
 
@@ -777,6 +1262,9 @@ function initSystemGears() {
     stop();
     phase = 0;
     apply(0);
+    introComplete = true;
+    introElapsed = introDuration;
+    finishIntro();
   };
   if (reduced.addEventListener) reduced.addEventListener('change', onReduce);
   else if (reduced.addListener) reduced.addListener(onReduce);
