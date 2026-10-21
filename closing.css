@@ -38,27 +38,11 @@
   text-transform: uppercase;
 }
 
-.vd-close h2 {
-  margin: 0;
-  max-width: 14em;
-  font-family: Oswald, "Arial Narrow", sans-serif;
-  font-size: clamp(36px, 4.4vw, 58px);
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  line-height: 1.02;
-  text-transform: none;
-}
-
-.vd-close--dark h2 span { color: var(--close-lime); }
-
-.vd-close--light h2 span {
-  color: var(--close-ink);
-  background: linear-gradient(transparent 64%, var(--close-lime) 64% 92%, transparent 92%);
-}
+.vd-close h2 { max-width: 14em; }
 
 .vd-close__lead {
   max-width: 42em;
-  margin: 18px 0 0;
+  margin: 0;
   color: #c4c2b6;
   font-size: 16px;
   line-height: 1.55;
@@ -96,13 +80,6 @@
   text-transform: none;
 }
 
-.vd-offer__card > p {
-  margin: 10px 0 0;
-  color: #b7b6ab;
-  font-size: 15px;
-  line-height: 1.45;
-}
-
 .vd-offer__list {
   display: grid;
   gap: 10px;
@@ -117,6 +94,7 @@
   gap: 10px;
   font-size: 15px;
   line-height: 1.4;
+  overflow-wrap: break-word;
 }
 
 .vd-offer__list svg {
@@ -129,15 +107,6 @@
 .vd-offer__foot {
   margin-top: auto;
   padding-top: 16px;
-}
-
-.vd-offer__note {
-  margin: 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--close-line);
-  color: #9d9e93;
-  font-size: 13px;
-  line-height: 1.4;
 }
 
 .vd-offer__btn,
@@ -169,36 +138,33 @@
 .vd-offer__btn::after,
 .vd-close__submit::after { content: "→"; }
 
-.vd-offer__meta {
+.vd-offer__price {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--close-line);
+  color: #f4f2ea;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (min-width: 901px) {
+  .vd-offer__price { min-height: 2.6em; }
+}
+
+.vd-offer__terms {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  gap: 10px;
   margin: 28px 0 0;
-  padding: 0;
+  padding: 22px 0 0;
+  border-top: 1px solid var(--close-line);
   list-style: none;
 }
 
-.vd-offer__meta li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+.vd-offer__terms li {
   color: #b9b8ad;
   font-size: 14px;
-  font-weight: 650;
-  line-height: 1.35;
-  text-align: left;
-}
-
-.vd-offer__meta svg {
-  flex: none;
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  line-height: 1.45;
 }
 
 .vd-faq__layout {
@@ -260,6 +226,7 @@
   color: #5c5e55;
   font-size: 16px;
   line-height: 1.6;
+  overflow-wrap: break-word;
 }
 
 .vd-contact__layout {
@@ -444,17 +411,15 @@
 @media (max-width: 900px) {
   .vd-close__container { padding-top: 64px; padding-bottom: 56px; }
   .vd-offer__grid,
-  .vd-offer__meta,
   .vd-faq__layout,
   .vd-contact__layout { grid-template-columns: 1fr; }
-  .vd-offer__meta li { justify-content: flex-start; }
+  .vd-offer__foot { margin-top: 18px; }
   .vd-faq__ask { margin-top: 18px; margin-bottom: 8px; }
 }
 
 @media (max-width: 600px) {
   .vd-close__container,
   .vd-closefoot__inner { padding-left: 20px; padding-right: 20px; }
-  .vd-close h2 { font-size: 34px; line-height: 1.08; }
   .vd-offer__card { padding: 22px 18px 18px; }
   .vd-offer__card h3 { font-size: 28px; }
   .vd-faq__list summary { font-size: 16px; }
