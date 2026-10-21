@@ -10,7 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="seo-geo.css?v=1">
+  <link rel="stylesheet" href="cases.css?v=1">
+  <link rel="stylesheet" href="closing.css?v=1">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,8 +34,8 @@
       <nav class="nav" aria-label="Навигация">
         <ul class="nav-list">
           <li><a href="#services">Услуги</a></li>
-          <li><a href="#projects">Проекты</a></li>
-          <li><a href="#process">Как работаем</a></li>
+          <li><a href="#cases">Проекты</a></li>
+          <li><a href="#offers">Форматы работы</a></li>
           <li><a href="#contact">Контакты</a></li>
         </ul>
       </nav>
@@ -178,141 +181,276 @@
     </section>
 
     <div class="vd-content">
-      <section class="vdp-section vdp-light" id="services" aria-labelledby="sites-title">
-        <div class="container">
-          <div class="vdp-head">
-            <p class="vdp-eyebrow">01 · Сайты</p>
-            <h2 class="vdp-title" id="sites-title">Сайт начинается со спроса</h2>
-            <p class="vdp-lead">Изучаем, что ищут ваши клиенты и какие вопросы задают перед обращением. На этой основе создаём структуру, страницы и содержание сайта.</p>
-          </div>
-          <div class="vdp-site-showcase" aria-label="Пример разработки сайта">
-            <div class="vdp-browser">
-              <div class="vdp-browser-bar"><i></i><i></i><i></i><span>vdgroup.dev/project</span></div>
-              <div class="vdp-browser-page">
-                <div class="vdp-mock-nav"><b>TOP BUILDING</b><span>Проекты&nbsp;&nbsp; О компании&nbsp;&nbsp; Контакты</span></div>
-                <div class="vdp-mock-hero"><span>СТРОИМ ДОМА<br>ДЛЯ ЖИЗНИ</span><i></i></div>
-                <div class="vdp-mock-lines"><i></i><i></i><i></i></div>
-              </div>
-            </div>
-            <pre class="vdp-code" aria-label="Фрагмент кода"><code><span>&lt;section</span> class="project"&gt;
-  &lt;h1&gt;Дом для жизни&lt;/h1&gt;
-  &lt;p&gt;Продуманная архитектура&lt;/p&gt;
-<span>&lt;/section&gt;</span>
+      <section class="demand" id="services" aria-labelledby="demand-title">
+ <div class="layout">
+  <div class="demand-main">
+   <p class="eyebrow">Сайты</p>
+   <h2 id="demand-title">Сайт начинается<br><span class="accent">со спроса</span></h2>
+   <div class="visual">
+   <div class="laptop"><div class="screen"><img class="website" src="assets/topbuilding-laptop.webp" width="1000" height="5577" alt="Пример нашей разработки — сайт TopBuilding.by" loading="lazy"></div><img class="frame" src="assets/laptop-frame.webp" width="900" height="600" alt="" loading="lazy"></div>
+   <div class="code-card" aria-label="Пример HTML-кода, декоративная иллюстрация"><div class="code-bar"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="filename">index.html · SEO в коробке</span></div><div class="code-window"><pre class="code-lines" aria-hidden="true"><span class="code-line">&lt;!doctype html<span class="tag">&gt;</span></span>
+<span class="code-line"><span class="tag">&lt;html</span> <span class="attr">lang</span>=<span class="value">&quot;ru&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line"><span class="tag">&lt;head</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">charset</span>=<span class="value">&quot;utf-8&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="value">&quot;width=device-width, initial-scale=1&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="comment">&lt;!-- SEO в коробке: метаданные страницы --&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;title</span><span class="tag">&gt;</span>ТОПБИЛДИНГ — строительство домов в Беларуси<span class="tag">&lt;/title</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">&quot;description&quot;</span></span>
+<span class="code-line">        <span class="attr">content</span>=<span class="value">&quot;Проектирование и строительство каменных домов под ключ. Проекты, калькулятор стоимости и видеообзоры объектов.&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">name</span>=<span class="value">&quot;robots&quot;</span> <span class="attr">content</span>=<span class="value">&quot;index, follow&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;link</span> <span class="attr">rel</span>=<span class="value">&quot;canonical&quot;</span> <span class="attr">href</span>=<span class="value">&quot;https://topbuilding.by/&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="comment">&lt;!-- Превью при публикации ссылки --&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">&quot;og:type&quot;</span> <span class="attr">content</span>=<span class="value">&quot;website&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">&quot;og:locale&quot;</span> <span class="attr">content</span>=<span class="value">&quot;ru_BY&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">&quot;og:title&quot;</span> <span class="attr">content</span>=<span class="value">&quot;ТОПБИЛДИНГ — дома под ключ&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">&quot;og:description&quot;</span></span>
+<span class="code-line">        <span class="attr">content</span>=<span class="value">&quot;От проекта до заселения. Посмотрите наши дома.&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;meta</span> <span class="attr">property</span>=<span class="value">&quot;og:url&quot;</span> <span class="attr">content</span>=<span class="value">&quot;https://topbuilding.by/&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="comment">&lt;!-- JSON-LD: поисковику понятна организация --&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;script</span> <span class="attr">type</span>=<span class="value">&quot;application/ld+json&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">  {</span>
+<span class="code-line">    <span class="value">&quot;@context&quot;</span>: <span class="value">&quot;https://schema.org&quot;</span>,</span>
+<span class="code-line">    <span class="value">&quot;@type&quot;</span>: <span class="value">&quot;GeneralContractor&quot;</span>,</span>
+<span class="code-line">    <span class="value">&quot;name&quot;</span>: <span class="value">&quot;ТОПБИЛДИНГ&quot;</span>,</span>
+<span class="code-line">    <span class="value">&quot;url&quot;</span>: <span class="value">&quot;https://topbuilding.by/&quot;</span>,</span>
+<span class="code-line">    <span class="value">&quot;areaServed&quot;</span>: {</span>
+<span class="code-line">      <span class="value">&quot;@type&quot;</span>: <span class="value">&quot;Country&quot;</span>,</span>
+<span class="code-line">      <span class="value">&quot;name&quot;</span>: <span class="value">&quot;Беларусь&quot;</span></span>
+<span class="code-line">    }</span>
+<span class="code-line">  }</span>
+<span class="code-line">  <span class="tag">&lt;/script</span><span class="tag">&gt;</span></span>
+<span class="code-line"><span class="tag">&lt;/head</span><span class="tag">&gt;</span></span>
+<span class="code-line"><span class="tag">&lt;body</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;main</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="comment">&lt;!-- Hero: то же предложение, что на экране --&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;home&quot;</span> <span class="attr">aria-labelledby</span>=<span class="value">&quot;hero-title&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h1</span> <span class="attr">id</span>=<span class="value">&quot;hero-title&quot;</span><span class="tag">&gt;</span>Проектируем и строим</span>
+<span class="code-line">        дома вашей мечты под ключ<span class="tag">&lt;/h1</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;p</span><span class="tag">&gt;</span>Каменные дома из керамзитоблока,</span>
+<span class="code-line">        кирпича, газоблока и монолита<span class="tag">&lt;/p</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">&quot;#calculator&quot;</span><span class="tag">&gt;</span>Рассчитать стоимость<span class="tag">&lt;/a</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="comment">&lt;!-- Калькулятор стоимости дома --&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;calculator&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>Калькулятор стоимости дома<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;form</span> <span class="attr">class</span>=<span class="value">&quot;calculator&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">&quot;area&quot;</span><span class="tag">&gt;</span>Площадь дома, м²<span class="tag">&lt;/label</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="value">&quot;area&quot;</span> <span class="attr">name</span>=<span class="value">&quot;area&quot;</span> <span class="attr">type</span>=<span class="value">&quot;number&quot;</span> <span class="attr">min</span>=<span class="value">&quot;1&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">&quot;submit&quot;</span><span class="tag">&gt;</span>Рассчитать<span class="tag">&lt;/button</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/form</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="comment">&lt;!-- Понятная структура и внутренние ссылки --&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;our-projects&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>Три архитектуры — три характера<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">&quot;/projects/classic/&quot;</span><span class="tag">&gt;</span>Классическая архитектура<span class="tag">&lt;/a</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">&quot;/projects/barn/&quot;</span><span class="tag">&gt;</span>Барнхаус<span class="tag">&lt;/a</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">&quot;/projects/minimalism/&quot;</span><span class="tag">&gt;</span>Минимализм<span class="tag">&lt;/a</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="comment">&lt;!-- Видео с заголовками и описаниями --&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;youtube&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>Мы на YouTube<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;article</span> <span class="attr">class</span>=<span class="value">&quot;video-card&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;h3</span><span class="tag">&gt;</span>Познакомьтесь с нами поближе<span class="tag">&lt;/h3</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;p</span><span class="tag">&gt;</span>Команда и подход к строительству домов.<span class="tag">&lt;/p</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/article</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;article</span> <span class="attr">class</span>=<span class="value">&quot;video-card&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;h3</span><span class="tag">&gt;</span>Как правильно выбрать участок<span class="tag">&lt;/h3</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/article</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;article</span> <span class="attr">class</span>=<span class="value">&quot;video-card&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;h3</span><span class="tag">&gt;</span>С чего начать строительство дома в Беларуси?<span class="tag">&lt;/h3</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/article</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;article</span> <span class="attr">class</span>=<span class="value">&quot;video-card&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;h3</span><span class="tag">&gt;</span>Сколько стоит построить дом?<span class="tag">&lt;/h3</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/article</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;tour-section&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>Экскурсия по нашим объектам<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h3</span><span class="tag">&gt;</span>Наши объекты в видеоформате<span class="tag">&lt;/h3</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;form</span> <span class="attr">class</span>=<span class="value">&quot;tour-form&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;label</span> <span class="attr">for</span>=<span class="value">&quot;tour-name&quot;</span><span class="tag">&gt;</span>Ваше имя<span class="tag">&lt;/label</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;input</span> <span class="attr">id</span>=<span class="value">&quot;tour-name&quot;</span> <span class="attr">autocomplete</span>=<span class="value">&quot;name&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;button</span> <span class="attr">type</span>=<span class="value">&quot;submit&quot;</span><span class="tag">&gt;</span>Записаться на экскурсию<span class="tag">&lt;/button</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/form</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;workflow&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>Как мы строим дома<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;ol</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;li</span><span class="tag">&gt;</span>Консультация<span class="tag">&lt;/li</span><span class="tag">&gt;</span><span class="tag">&lt;li</span><span class="tag">&gt;</span>Договор<span class="tag">&lt;/li</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;li</span><span class="tag">&gt;</span>Проектирование<span class="tag">&lt;/li</span><span class="tag">&gt;</span><span class="tag">&lt;li</span><span class="tag">&gt;</span>Подготовка<span class="tag">&lt;/li</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;li</span><span class="tag">&gt;</span>Фундамент<span class="tag">&lt;/li</span><span class="tag">&gt;</span><span class="tag">&lt;li</span><span class="tag">&gt;</span>Стены и крыша<span class="tag">&lt;/li</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;li</span><span class="tag">&gt;</span>Коммуникации<span class="tag">&lt;/li</span><span class="tag">&gt;</span><span class="tag">&lt;li</span><span class="tag">&gt;</span>Отделка<span class="tag">&lt;/li</span><span class="tag">&gt;</span></span>
+<span class="code-line">        <span class="tag">&lt;li</span><span class="tag">&gt;</span>Ландшафт<span class="tag">&lt;/li</span><span class="tag">&gt;</span><span class="tag">&lt;li</span><span class="tag">&gt;</span>Заселение<span class="tag">&lt;/li</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;/ol</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;yandex-map&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>География выполненных объектов<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">&quot;map&quot;</span> <span class="attr">aria-label</span>=<span class="value">&quot;Карта объектов&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;/div</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="tag">&lt;section</span> <span class="attr">id</span>=<span class="value">&quot;testimonials&quot;</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;h2</span><span class="tag">&gt;</span>Что говорят наши клиенты<span class="tag">&lt;/h2</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;p</span><span class="tag">&gt;</span>Каждый отзыв — реальный документ с подписью клиента.<span class="tag">&lt;/p</span><span class="tag">&gt;</span></span>
+<span class="code-line">      <span class="tag">&lt;div</span> <span class="attr">class</span>=<span class="value">&quot;testimonials-slider&quot;</span><span class="tag">&gt;</span><span class="tag">&lt;/div</span><span class="tag">&gt;</span></span>
+<span class="code-line">    <span class="tag">&lt;/section</span><span class="tag">&gt;</span></span>
+<span class="code-line">  <span class="tag">&lt;/main</span><span class="tag">&gt;</span></span>
+<span class="code-line"><span class="tag">&lt;/body</span><span class="tag">&gt;</span></span>
+<span class="code-line"><span class="tag">&lt;/html</span><span class="tag">&gt;</span></span></pre></div></div>
+   <div class="caption">TOPBUILDING.BY — наша разработка</div>
+   </div>
+  </div>
+  <div class="copy">
+   <p class="kicker">Продуманно. Структурировано. На коде.</p>
+   <h3>Разработка на коде.<br>Гибкость под вашу задачу.</h3>
+   <p>Создаём сайты, которые понятны посетителю, рассказывают о нужном продукте и помогают получить обращение. Чистый код, продуманная структура и возможность развития.</p>
+   <div class="benefit"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M13 2 4 14h7l-1 8 10-14h-7l0-6z"/></svg></span><div><strong>Быстрая загрузка</strong><p>Оптимизированный код и изображения.</p></div></div>
+   <div class="benefit"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V4M15 7V4M8 11h8v2a4 4 0 0 1-8 0v-2zM12 17v3"/></svg></span><div><strong>Нужные интеграции</strong><p>CRM, формы, сквозная аналитика и другие инструменты.</p></div></div>
+   <div class="benefit"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M4 19h16v2H2V3h2v16zm3-2 4.2-5.2 3.1 2.6L20 7.2 18.6 6 12.8 12l-3.1-2.6L7 14.2V17z"/></svg></span><div><strong>SEO-база на старте</strong><p>Семантическая структура и подготовка к продвижению.</p></div></div>
+   <button class="replay" type="button">Повторить просмотр сайта ↻</button>
+  </div>
+ </div>
+ <div class="included"><b>Включено в разработку</b><span>Структура</span><span>Метаданные</span><span>Индексация</span><span>Аналитика</span></div>
+</section>
 
-.project {
-  display: grid;
-  gap: 2rem;
-}</code></pre>
-          </div>
-          <ul class="vdp-benefits">
-            <li><h3>Разработка на коде</h3><p>Индивидуальная структура и функциональность под задачи бизнеса.</p></li>
-            <li><h3>Оптимизация загрузки</h3><p>Работаем с кодом, изображениями и загрузкой ресурсов.</p></li>
-            <li><h3>Нужные интеграции</h3><p>Формы, аналитика, CRM, калькуляторы и другие согласованные инструменты.</p></li>
-            <li><h3>Основа для продвижения</h3><p>Готовим страницы для поиска и запуска рекламы.</p></li>
-          </ul>
-          <a class="vdp-button" href="#contact" data-direction="site">Обсудить сайт</a>
-        </div>
-      </section>
+      <section aria-labelledby="relevance-title" class="relevance" id="relevance">
+<div class="container">
+<p class="eyebrow">Контекстная реклама · гиперрелевантность</p>
+<h2 id="relevance-title">От запроса —<br/><span>к нужной странице</span></h2>
+<p class="intro">Клиент ищет конкретную услугу — видит её в объявлении и попадает на страницу с тем же предложением.</p>
+<div class="scene">
+<div class="google-fit">
+<div class="browser google">
+<div class="chrome site-bar">
+<div class="tabline"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="pagetab">строительство каменных домов в Минске <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></span><svg class="plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+<div class="toolbar"><span class="win-nav" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 6 9 12l6 6"/></svg><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.2-5.5M20 4v5h-5"/></svg></span><span class="address"><span class="gmark" aria-hidden="true">G</span><span class="address-text">google.com</span></span><svg class="star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.4 6 .9-4.3 4.2 1 5.9L12 16.8 6.7 19.4l1-5.9L3.4 9.3l6-.9Z"/></svg></div>
+</div>
+<div class="search">
+<div class="search-row">
+<div aria-label="Google" class="logo"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span></div>
+<div class="query-group">
+<span class="badge"><span class="step-number">1</span> Запрос</span>
+<div class="query"><span class="query-text">строительство каменных домов в Минске</span><span class="query-tools" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3"/></svg><i></i><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/></svg></span></div>
+</div>
+</div>
+<div class="tabs"><b>Все</b><span>Картинки</span><span>Видео</span><span>Карты</span><span>Ещё</span></div>
+</div>
+<div class="ad">
+<span class="badge"><span class="step-number">2</span> Объявление</span>
+<div class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M10 20v-6h4v6"/></svg><span><b>Реклама · TOP BUILDING</b><br/><small>topbuilding.by</small></span></div>
+<div class="ad-grid"><div class="ad-main"><h3>Строительство каменных домов в Минске</h3><p class="description">Проектируем и строим дома из блоков, кирпича и монолита. Классическая архитектура, барнхаус и минимализм. Подберём проект и комплектацию под ваш участок. Рассчитайте стоимость строительства.</p><div class="links">
+<div class="link"><span><b>Дома из блоков</b><small>Газобетон и керамзитоблок</small></span><span class="chevron" aria-hidden="true">›</span></div>
+<div class="link"><span><b>Дома из монолита</b><small>Решения под ваш участок</small></span><span class="chevron" aria-hidden="true">›</span></div>
+<div class="link"><span><b>Дома из кирпича</b><small>Проекты и комплектации</small></span><span class="chevron" aria-hidden="true">›</span></div>
+<div class="link"><span><b>Калькулятор стоимости</b><small>Предварительный расчёт</small></span><span class="chevron" aria-hidden="true">›</span></div>
+</div></div>
+<div class="ad-side">
+<img alt="Иллюстрация каменного дома" class="photo" height="152" loading="lazy" src="assets/ad-house.webp" width="220"/>
+<div class="business">
+<div class="map"><span>Минск и область</span></div>
+<div class="row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.2"/></svg><span>Адрес и маршрут</span><span class="chevron">›</span></div>
+<div class="row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17a7 7 0 0 1 14 0"/><circle cx="12" cy="8" r="3"/><path d="M4 20h16"/></svg><span>Отзывы клиентов</span><span class="chevron">›</span></div>
+</div>
+<div class="cta"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h3l1 4-2 1a12 12 0 0 0 6 6l1-2 4 1v3c-8 1-15-6-13-13Z"/></svg><span>Оставить заявку</span></div>
+<div class="social"><span class="social-item"><svg viewBox="0 0 24 24" aria-hidden="true"><rect fill="#ff0033" height="16" rx="5" stroke="none" width="22" x="1" y="4"/><path d="m10 9 6 3-6 3Z" fill="#fff" stroke="none"/></svg>YouTube</span><span class="social-item instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect height="16" rx="5" width="16" x="4" y="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="16.5" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg>Instagram</span></div>
+</div>
+</div>
+<div class="callouts">Проектирование и строительство · Цены на сайте · Заявка онлайн</div>
+</div>
+</div>
+</div>
+<div class="browser site">
+<div class="site-label"><span class="step-number">3</span> Сайт</div>
+<div class="chrome site-bar">
+<div class="tabline"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="pagetab">TopBuilding.by <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></span><svg class="plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></div>
+<div class="toolbar"><span class="win-nav" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 6 9 12l6 6"/></svg><svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.2-5.5M20 4v5h-5"/></svg></span><span class="address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="11" width="12" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span class="address-text">topbuilding.by</span></span><svg class="star" viewBox="0 0 24 24"><path d="m12 3 2.6 5.4 6 .9-4.3 4.2 1 5.9L12 16.8 6.7 19.4l1-5.9L3.4 9.3l6-.9Z"/></svg></div>
+</div>
+<div class="shot">
+<img alt="Настоящий Hero TopBuilding: каменное домостроение, Минская область" height="762" loading="lazy" src="assets/topbuilding-hero.webp" width="1100"/>
+<span aria-hidden="true" class="mark"></span>
+</div>
+</div>
+<svg aria-hidden="true" class="connector" preserveAspectRatio="none" viewBox="0 0 100 100"><path d="M34 42.6 C48 41.2 56 40.6 61 40.8" fill="none" stroke="#d5eb00" stroke-width="1.6" vector-effect="non-scaling-stroke"/><path d="M59 39.7 L61.2 40.8 L59 41.9" fill="none" stroke="#d5eb00" stroke-width="1.6" vector-effect="non-scaling-stroke"/></svg>
+</div>
+<p class="note">Схема выдачи · пример размещения. Контактный блок условный; состав элементов реального объявления зависит от формата показа.</p>
+</div>
+</section>
 
-      <section class="vdp-section vdp-dark" id="ads" aria-labelledby="ads-title">
-        <div class="container">
-          <div class="vdp-head">
-            <p class="vdp-eyebrow">02 · Контекстная реклама</p>
-            <h2 class="vdp-title" id="ads-title">Что искал — то и увидел</h2>
-            <p class="vdp-lead">Связываем поисковый запрос, объявление и посадочную страницу одним предложением.</p>
-          </div>
-          <div class="vdp-tabs" role="tablist" aria-label="Примеры рекламных направлений">
-            <button type="button" role="tab" aria-selected="true" aria-controls="ad-demo" id="ad-tab-frame" data-ad="frame">Каркасный дом</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="ad-demo" id="ad-tab-aero" data-ad="aero" tabindex="-1">Дом из газобетона</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="ad-demo" id="ad-tab-brick" data-ad="brick" tabindex="-1">Кирпичный дом</button>
-          </div>
-          <div class="vdp-ad-chain" id="ad-demo" role="tabpanel" aria-labelledby="ad-tab-frame" aria-live="polite">
-            <article class="vdp-chain-card">
-              <span>01 · Запрос</span>
-              <div class="vdp-search"><i aria-hidden="true"></i><strong data-ad-query>Каркасный дом под ключ</strong></div>
-            </article>
-            <b class="vdp-arrow" aria-hidden="true">→</b>
-            <article class="vdp-chain-card vdp-ad-example">
-              <span>02 · Пример объявления</span>
-              <small>Реклама · example.by</small>
-              <h3 data-ad-title>Каркасные дома под ключ</h3>
-              <p>Проектирование и строительство. Обсудите задачу со специалистом.</p>
-            </article>
-            <b class="vdp-arrow" aria-hidden="true">→</b>
-            <article class="vdp-chain-card vdp-landing">
-              <span>03 · Подходящая страница</span>
-              <div class="vdp-house-visual" data-ad-visual="frame" aria-hidden="true"><i></i><i></i><i></i></div>
-              <h3 data-page-title>Каталог каркасных домов</h3>
-              <p data-page-copy>Проекты, варианты комплектации и этапы строительства каркасных домов.</p>
-            </article>
-          </div>
-          <p class="vdp-caption">Человек попадает сразу на нужное направление.</p>
-          <p class="vdp-section-note">Настраиваем Google Ads и Яндекс Директ. Проверяем посадочные страницы и отслеживаем обращения.</p>
-          <a class="vdp-button" href="#contact" data-direction="ads">Обсудить рекламу</a>
-        </div>
-      </section>
-
-      <section class="vdp-section vdp-light" id="seo" aria-labelledby="seo-title">
-        <div class="container">
-          <div class="vdp-head">
-            <p class="vdp-eyebrow">03 · SEO</p>
-            <h2 class="vdp-title" id="seo-title">SEO-база уже внутри</h2>
-            <p class="vdp-lead">Закладываем основу для поискового продвижения во время разработки каждой страницы.</p>
-          </div>
-          <div class="vdp-seo-layout">
-            <div class="vdp-sitemap" aria-label="Пример структуры сайта">
-              <div class="vdp-node vdp-node-main">Строительство домов</div>
-              <div class="vdp-node-row">
-                <div class="vdp-node">Каркасные дома</div>
-                <div class="vdp-node">Дома из газобетона</div>
-                <div class="vdp-node">Кирпичные дома</div>
-              </div>
-              <div class="vdp-node-row vdp-node-row-small">
-                <div class="vdp-node">Проекты</div><div class="vdp-node">Цены</div><div class="vdp-node">Этапы работ</div>
-              </div>
-            </div>
-            <ul class="vdp-checklist">
-              <li>Структура по поисковому спросу</li><li>Понятные адреса страниц</li>
-              <li>Заголовки и метаданные</li><li>Внутренние ссылки</li>
-              <li>robots.txt, sitemap и canonical</li><li>Мобильная версия и оптимизация загрузки</li>
-              <li>Подходящая структурированная разметка</li><li>Проверка технической доступности для поиска</li>
-              <li>Подключение инструментов вебмастера и аналитики в согласованном объёме</li>
-            </ul>
-          </div>
-          <div class="vdp-seo-stages">
-            <div><span>На старте</span><h3>SEO-база</h3></div>
-            <b aria-hidden="true">→</b>
-            <div><span>После запуска</span><h3>Развитие контента и видимости</h3></div>
-          </div>
-          <details class="vdp-disclosure"><summary>Когда начнёт работать SEO?</summary><p>В конкурентной нише новому сайту может потребоваться длительная работа для роста по основным запросам. Поэтому на старте можем привлекать аудиторию через рекламу, одновременно развивая SEO. Сроки зависят от конкуренции, качества сайта, контента и других факторов.</p></details>
-          <a class="vdp-button" href="#contact" data-direction="seo">Обсудить SEO</a>
-        </div>
-      </section>
+<section aria-labelledby="seo-geo-title" class="seo-geo" id="seo-geo"><div class="container"><div class="main"><svg aria-hidden="true" class="wires" preserveAspectRatio="none" viewBox="0 0 100 100"><path d="M48 24 C50 34 52 44 54 49"/><path d="M49 74 C52 72 53 76 55 79"/></svg><div class="heading"><div class="eyebrow">SEO + GEO · РАЗВИТИЕ САЙТА</div><h2 id="seo-geo-title">SEO-база внутри.<br/><span>Развитие — постоянно.</span></h2><p class="intro">Пока работает контекстная реклама, развиваем видимость сайта в поиске и ответах ИИ.</p></div><div class="layers"><div class="seo-stage"><span class="callout callout-site"><span>Сайт</span><i></i></span><div class="layer hero-layer"><div aria-hidden="true" class="chrome"><i class="dot"></i><i class="dot"></i><i class="dot"></i></div><img alt="Наша разработка — Hero сайта TopBuilding.by" height="762" loading="lazy" src="assets/topbuilding-hero.webp" width="1100"/></div>
+<span class="callout callout-structure"><span>Структура и контент</span><i></i></span><div class="layer structure"><h3>Структура и контент</h3><div class="structure-grid"><div class="structure-item"><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg>Страницы услуг</strong>Строительство домов<br/>Проектирование<br/>Комплектации<br/>Цены</div><div class="structure-item"><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Ответы на вопросы</strong>Какой материал выбрать?<br/>Сколько стоит дом?<br/>Этапы строительства<br/>Сроки и гарантия</div><div class="structure-item"><strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7Z"/><path d="M14 3v5h5M9 13h6M9 17h5"/></svg>Внутренние ссылки</strong>Связанные услуги<br/>Похожие проекты<br/>Полезные статьи<br/>Коммерческие якоря</div></div></div>
+<span class="callout callout-code"><span>Техническая SEO-база</span><i></i></span><div aria-label="Техническая SEO-база — иллюстрация разметки" class="layer code-layer"><pre aria-label="Иллюстрация технической SEO-разметки"><span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attr">lang=</span><span class="value">"ru"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+<span class="tag">&lt;title&gt;</span>Строительство каменных домов в Минске | Топбилдинг<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attr">name=</span><span class="value">"description"</span> <span class="attr">content=</span><span class="value">"Строим каменные дома из блоков, кирпича и монолита"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;link</span> <span class="attr">rel=</span><span class="value">"canonical"</span> <span class="attr">href=</span><span class="value">"https://topbuilding.by/"</span><span class="tag">&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">type=</span><span class="value">"application/ld+json"</span><span class="tag">&gt;</span>
+{ <span class="value">"@context"</span>: <span class="value">"https://schema.org"</span>, <span class="value">"@type"</span>: <span class="value">"LocalBusiness"</span>,
+  <span class="value">"name"</span>: <span class="value">"Топбилдинг"</span>, <span class="value">"url"</span>: <span class="value">"https://topbuilding.by/"</span> }
+<span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;/head&gt;</span></pre></div><span class="included">Включено в разработку →</span></div></div><div class="channels"><article class="result"><div class="result-head"><h3>SEO — Google и Яндекс</h3><div aria-hidden="true" class="brands"><span class="google"><span style="color:#4285f4">G</span><span style="color:#ea4335">o</span><span style="color:#fbbc05">o</span><span style="color:#4285f4">g</span><span style="color:#34a853">l</span><span style="color:#ea4335">e</span></span><span class="yandex"><b>Я</b>ндекс</span></div></div><div class="result-label">ОРГАНИЧЕСКИЙ ПОИСК</div><div class="snippet"><div class="snippet-copy"><div class="domain"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M10 20v-6h4v6"/></svg>topbuilding.by</div><div class="snippet-title">Строительство каменных домов в Минске</div><p>Каменные дома из керамзитоблока, кирпича, газоблока и монолита. Проектирование и строительство под ключ в Минске и Минской области.</p></div><img alt="" class="thumb" height="152" loading="lazy" src="assets/ad-house.webp" width="220"/></div><div class="demo">Иллюстрация поискового результата</div></article>
+<article class="result"><div class="result-head"><h3>GEO — видимость в ответах ИИ</h3><svg aria-label="Gemini" class="gemini" role="img" viewBox="0 0 32 32"><defs><linearGradient id="seo-gemini" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#168fff"></stop><stop offset=".55" stop-color="#6f42eb"></stop><stop offset="1" stop-color="#de5bd7"></stop></linearGradient></defs><path d="M16 1C18 10 22 14 31 16 22 18 18 22 16 31 14 22 10 18 1 16 10 14 14 10 16 1Z" fill="url(#seo-gemini)"></path></svg></div><div class="answer"><div class="answer-copy"><p>Каменные дома строят из блоков, кирпича и монолита. Сравнивайте проекты, комплектации и опыт компании.</p><span class="source"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4Z"/><path d="M10 20v-6h4v6"/></svg>Источник: topbuilding.by</span></div><img alt="" class="thumb" height="152" loading="lazy" src="assets/ad-house.webp" width="220"/></div><div class="demo demo-end">Иллюстрация ответа</div></article></div></div>
+<div class="ongoing"><div class="eyebrow">РАЗВИТИЕ ПОСЛЕ ЗАПУСКА</div><div class="work-grid"><div class="work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><div><strong>Страницы под спрос</strong><p>Новые страницы услуг, категорий и локаций</p></div></div><div class="work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><div><strong>Полезный контент</strong><p>Статьи, ответы на вопросы, руководства</p></div></div><div class="work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8H5a2 2 0 0 0 0 4h1M15 16h4a2 2 0 0 0 0-4h-1"/><path d="M8 12h8"/></svg><div><strong>Внутренние связи</strong><p>Логичная структура и перелинковка</p></div></div><div class="work"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19V10M12 19V5M19 19v-7"/></svg><div><strong>Анализ видимости</strong><p>Отслеживаем рост и находим новые точки роста</p></div></div></div></div><p class="limit">Позиции в поиске и цитирование в ответах ИИ не гарантируются. Карточки выше показывают принцип работы.</p></div></section>
 
       <section class="vdp-section vdp-dark" id="video" aria-labelledby="video-title">
         <div class="container">
-          <div class="vdp-head">
-            <p class="vdp-eyebrow">04 · Видеоконтент</p>
-            <h2 class="vdp-title" id="video-title">Ваш бизнес стоит показать</h2>
-            <p class="vdp-lead">Помогаем клиенту познакомиться с командой, увидеть процесс и понять предложение до первого обращения.</p>
-          </div>
-          <a class="vdp-video-main" href="https://youtube.com/@vitalikdoyniak" target="_blank" rel="noopener" aria-label="Открыть канал Виталика Дойняка на YouTube">
-            <div class="vdp-video-screen">
-              <span>YOUTUBE-КАНАЛ</span>
-              <strong>Люди.<br>Процесс.<br>Результат.</strong>
-              <small>Перейти на канал ↗</small>
+          <div class="vdp-show-head">
+            <div>
+              <p class="vdp-eyebrow">04 · Видеоконтент</p>
+              <h2 class="vdp-title" id="video-title"><span class="vdp-show-line">Ваш бизнес</span><span class="vdp-show-line">стоит <em>показать</em></span></h2>
             </div>
-          </a>
-          <div class="vdp-frames">
-            <article><div class="vdp-frame-art vdp-frame-interview"><i></i><i></i></div><h3>Интервью и знакомство</h3></article>
-            <article><div class="vdp-frame-art vdp-frame-process"><i></i><i></i><i></i></div><h3>Процесс и детали</h3></article>
-            <article><div class="vdp-frame-art vdp-frame-drone"><i></i></div><h3>Аэросъёмка объекта</h3></article>
+            <div class="vdp-show-aside">
+              <p>Видео помогает просто объяснить сложные вещи, показать реальный процесс и команду, вызвать доверие и интерес к вашему бизнесу.</p>
+              <a class="vdp-show-pill" href="https://youtube.com/@vitalikdoyniak" target="_blank" rel="noopener">
+                <span class="vdp-show-pill-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.5v9l8-4.5-8-4.5Z"/></svg></span>
+                YouTube + сайт + рекламные ролики
+              </a>
+            </div>
           </div>
-          <ol class="vdp-production" aria-label="Этапы производства">
-            <li>Вопросы клиентов</li><li>Сценарий</li><li>Съёмка</li><li>Монтаж</li><li>Публикация</li>
+          <div class="vdp-show-stage">
+            <p class="vdp-show-note">Настоящие люди и реальные процессы<svg viewBox="0 0 86 64" aria-hidden="true"><path d="M10 6c0 28 16 40 58 36"/><path d="M58 34l12 8-14 6"/></svg></p>
+            <a class="vdp-show-player" href="https://youtu.be/AHl0RueSh9M?t=188" target="_blank" rel="noopener" aria-label="Смотреть ролик: монтажник на объекте, 4 минуты 21 секунда">
+              <img src="assets/video-hero.jpg" alt="" width="1920" height="1080">
+              <span class="vdp-show-expand" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5H5v4M15 5h4v4M9 19H5v-4M15 19h4v-4"/></svg></span>
+              <span class="vdp-show-center" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7.2v9.6l8.2-4.8L9 7.2Z"/></svg></span>
+              <span class="vdp-show-bar">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6.5v11l10-5.5L8 6.5Z"/></svg>
+                <span class="vdp-show-time">4:21</span>
+                <span class="vdp-show-track" aria-hidden="true"><i></i></span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3l4 3V7L7 10H4Z"/><path d="M16 9.5a4 4 0 0 1 0 5"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6 6l1.6 1.6M16.4 16.4 18 18M18 6l-1.6 1.6M7.6 16.4 6 18"/></svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4H4v4M16 4h4v4M8 20H4v-4M16 20h4v-4"/></svg>
+              </span>
+            </a>
+          </div>
+          <div class="vdp-show-cards">
+            <a href="https://youtu.be/AHl0RueSh9M?t=18" target="_blank" rel="noopener">
+              <span class="vdp-show-thumb"><img src="assets/video-interview.jpg" alt="" width="1920" height="1080"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H5v4M15 5h4v4M9 19H5v-4M15 19h4v-4"/></svg></span>
+              <span class="vdp-show-kicker">01 / Интервью</span>
+              <strong>Говорим о задачах, подходе и опыте</strong>
+            </a>
+            <a href="https://youtu.be/AHl0RueSh9M?t=192" target="_blank" rel="noopener">
+              <span class="vdp-show-thumb"><img class="vdp-frame-process" src="assets/video-process.jpg" alt="" width="1920" height="1080"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H5v4M15 5h4v4M9 19H5v-4M15 19h4v-4"/></svg></span>
+              <span class="vdp-show-kicker">02 / Процесс</span>
+              <strong>Показываем работу без прикрас</strong>
+            </a>
+            <a href="https://youtu.be/XwDCS3asd30" target="_blank" rel="noopener">
+              <span class="vdp-show-thumb"><img class="vdp-frame-aerial" src="assets/video-aerial.jpg" alt="" width="1920" height="1080"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5H5v4M15 5h4v4M9 19H5v-4M15 19h4v-4"/></svg></span>
+              <span class="vdp-show-kicker">03 / Аэросъёмка</span>
+              <strong>Снимаем объект с воздуха и в деталях</strong>
+            </a>
+          </div>
+          <ol class="vdp-show-steps" aria-label="Этапы производства">
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10M7 11h10M7 15h6"/><path d="M6 4h12v16H6Z"/></svg>Вопросы клиентов</span></li>
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h6l4 4v12H8Z"/><path d="M14 4v4h4M10 12h6M10 16h4"/></svg>Сценарий</span></li>
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h11v8H4Z"/><path d="M15 11l5-2v6l-5-2"/></svg>Съёмка</span></li>
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M10 10.2v3.6l3.2-1.8-3.2-1.8Z"/></svg>Монтаж</span></li>
+            <li><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V6M8 9l4-4 4 4"/><path d="M5 18h14"/></svg>Публикация</span></li>
           </ol>
-          <p class="vdp-section-note">Пишем сценарии вокруг реальных вопросов аудитории. Используем основную камеру, action-камеру и дрон по задаче. Монтируем, оформляем публикацию на YouTube и размещаем видео на подходящих страницах сайта.</p>
-          <a class="vdp-button" href="#contact" data-direction="video">Обсудить видео</a>
         </div>
       </section>
 
@@ -334,156 +472,202 @@
         </div>
       </section>
 
-      <section class="vdp-section vdp-dark" id="projects" aria-labelledby="projects-title">
-        <div class="container">
-          <div class="vdp-head"><p class="vdp-eyebrow">Портфолио</p><h2 class="vdp-title" id="projects-title">Успешные кейсы</h2></div>
-          <div class="vdp-cases">
-            <article class="vdp-case vdp-case-main">
-              <div class="vdp-case-visual"><span>TOP<br>BUILDING</span><i></i></div>
-              <div class="vdp-case-copy"><span>Сайт · Структура · Контент</span><h3>TOP BUILDING</h3><dl><div><dt>Задача</dt><dd>Представить направления строительства в понятной структуре.</dd></div><div><dt>Что сделали</dt><dd>Подготовили структуру и интерфейс страниц проекта.</dd></div><div><dt>Проверяемый результат</dt><dd>Создан сайт и страницы направлений.</dd></div></dl></div>
+      <section class="vd-cases" id="cases" aria-labelledby="vd-cases-title">
+        <div class="vd-cases__container">
+          <header class="vd-cases__header">
+            <div><p class="vd-cases__eyebrow">ПОРТФОЛИО · РЕАЛЬНЫЕ ПРОЕКТЫ</p><h2 id="vd-cases-title">Кейсы: сайты <span>и продвижение</span></h2></div>
+            <p class="vd-cases__intro">Четыре проекта для строительного бизнеса.<br>От загородных домов до промышленного строительства и аренды техники.</p>
+          </header>
+          <div class="vd-cases__grid">
+            <article class="vd-case vd-case--featured">
+              <a class="vd-case__preview" href="https://topbuilding.by/" target="_blank" rel="noopener noreferrer" aria-label="Посмотреть сайт TopBuilding, откроется в новой вкладке">
+                <img src="assets/topbuilding.webp" width="1100" height="762" alt="Главная страница TopBuilding — проектирование и строительство каменных домов" loading="lazy" decoding="async">
+                <span class="vd-case__visit">Открыть сайт ↗</span>
+              </a>
+              <div class="vd-case__body">
+                <div class="vd-case__title-row"><h3>TopBuilding</h3><span class="vd-case__domain">topbuilding.by</span></div>
+                <p class="vd-case__summary">Проектирование и строительство каменных домов</p>
+                <ul class="vd-case__tags" aria-label="Направления работы"><li>Сайт</li><li>Реклама</li><li>Видео</li></ul>
+                <div class="vd-case__facts"><div><h4>Задача</h4><p>Представить строительство домов, проекты и подход компании.</p></div><div><h4>Решение</h4><p>Объединить сайт, рекламу и видеоконтент вокруг услуг компании.</p></div></div>
+                <details class="vd-case__details"><summary>Подробнее о проекте <span aria-hidden="true">＋</span></summary><div class="vd-case__details-content"><p>На сайте представлены проекты домов, материалы о строительстве и видео. Работа с контентом и рекламой дополняет разработку сайта.</p><a href="https://topbuilding.by/" target="_blank" rel="noopener noreferrer">Перейти на topbuilding.by ↗</a></div></details>
+              </div>
             </article>
-            <article class="vdp-case">
-              <div class="vdp-case-visual vdp-concrete"><i></i><i></i></div>
-              <div class="vdp-case-copy"><span>Сайт · Услуга</span><h3>Бетонные полы</h3><p>Подготовлена подача услуги и структура посадочных страниц.</p><small>Проверяемый результат: созданы материалы для сайта.</small></div>
+            <div class="vd-cases__secondary">
+              <article class="vd-case vd-case--compact">
+                <a class="vd-case__preview" href="https://topagrobel.by/" target="_blank" rel="noopener noreferrer" aria-label="Посмотреть сайт ТопАгроБел, откроется в новой вкладке"><img src="assets/topagrobel.webp" width="1200" height="549" alt="Сайт ТопАгроБел — промышленное строительство под ключ" loading="lazy" decoding="async"><span class="vd-case__visit">Открыть сайт ↗</span></a>
+                <div class="vd-case__body"><div class="vd-case__title-row"><h3>ТопАгроБел</h3><span class="vd-case__domain">topagrobel.by</span></div><p class="vd-case__summary">Промышленное строительство</p><details class="vd-case__details"><summary>Подробнее о проекте <span aria-hidden="true">＋</span></summary><div class="vd-case__details-content"><p>Сайт строительной компании: направления работ, объекты и обращение за расчётом. Контекстную рекламу ведём с учётом промышленной аудитории.</p><a href="https://topagrobel.by/" target="_blank" rel="noopener noreferrer">Открыть сайт ↗</a></div></details></div>
+              </article>
+              <article class="vd-case vd-case--compact">
+                <a class="vd-case__preview" href="https://topagrobelarenda.by/" target="_blank" rel="noopener noreferrer" aria-label="Посмотреть сайт аренды техники, откроется в новой вкладке"><img src="assets/arenda-tehniki.webp" width="1200" height="549" alt="Сайт аренды техники ТопАгроБел — экскаватор-погрузчик" loading="lazy" decoding="async"><span class="vd-case__visit">Открыть сайт ↗</span></a>
+                <div class="vd-case__body"><div class="vd-case__title-row"><h3>Аренда техники</h3><span class="vd-case__domain">topagrobelarenda.by</span></div><p class="vd-case__summary">Спецтехника и услуги с машинистом</p><details class="vd-case__details"><summary>Подробнее о проекте <span aria-hidden="true">＋</span></summary><div class="vd-case__details-content"><p>Сайт с направлениями аренды и характеристиками техники. Посетитель может выбрать подходящую машину и перейти к обращению.</p><a href="https://topagrobelarenda.by/" target="_blank" rel="noopener noreferrer">Открыть сайт ↗</a></div></details></div>
+              </article>
+              <article class="vd-case vd-case--compact">
+                <a class="vd-case__preview" href="https://betonnypol.by/" target="_blank" rel="noopener noreferrer" aria-label="Посмотреть сайт Бетонный пол, откроется в новой вкладке"><img src="assets/betonny-pol.webp" width="1200" height="549" alt="Сайт Бетонный пол — промышленные бетонные и наливные полы" loading="lazy" decoding="async"><span class="vd-case__visit">Открыть сайт ↗</span></a>
+                <div class="vd-case__body"><div class="vd-case__title-row"><h3>Бетонный пол</h3><span class="vd-case__domain">betonnypol.by</span></div><p class="vd-case__summary">Бетонные и наливные полы для бизнеса</p><details class="vd-case__details"><summary>Подробнее о проекте <span aria-hidden="true">＋</span></summary><div class="vd-case__details-content"><p>Отдельная посадочная страница направления: технологии устройства полов, условия работы и запрос расчёта стоимости.</p><a href="https://betonnypol.by/" target="_blank" rel="noopener noreferrer">Открыть сайт ↗</a></div></details></div>
+              </article>
+            </div>
+          </div>
+          <p class="vd-cases__footnote">В каждом проекте — своя задача и свой набор инструментов.</p>
+        </div>
+      </section>
+
+      <!-- Завершающие секции. Тексты пакетов, вопросов и формы редактируются здесь. -->
+      <section class="vd-close vd-close--dark" id="offers" aria-labelledby="offers-title">
+        <div class="vd-close__container">
+          <p class="vd-close__eyebrow">Форматы сотрудничества</p>
+          <h2 id="offers-title">Решения для <span>вашего бизнеса</span></h2>
+          <p class="vd-close__lead">Начинаем с вашей задачи. Подбираем инструменты под спрос, бюджет и этап развития бизнеса.</p>
+          <div class="vd-offer__grid">
+            <article class="vd-offer__card">
+              <h3>Запуск</h3>
+              <p>Сайт и первый запуск рекламы</p>
+              <ul class="vd-offer__list">
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Изучение бизнеса и спроса.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Разработка сайта с SEO-базой.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Запуск контекстной рекламы.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Настройка аналитики.</li>
+              </ul>
+              <div class="vd-offer__foot">
+                <p class="vd-offer__note">Стоимость после оценки проекта</p>
+                <a class="vd-offer__btn" href="#contact" data-interest="Запуск">Обсудить запуск</a>
+              </div>
             </article>
-            <article class="vdp-case vdp-case-note">
-              <div class="vdp-case-copy"><span>Принцип публикации</span><h3>Только подтверждённые результаты</h3><p>Коммерческие показатели публикуем, когда есть проверяемые данные заказчика.</p></div>
+            <article class="vd-offer__card vd-offer__card--focus">
+              <h3>Развитие</h3>
+              <p>Для сайта, который уже работает</p>
+              <ul class="vd-offer__list">
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Новые страницы под спрос.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Ведение и улучшение рекламы.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>SEO и работа над GEO.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Анализ обращений.</li>
+              </ul>
+              <div class="vd-offer__foot">
+                <p class="vd-offer__note">Ежемесячная работа</p>
+                <a class="vd-offer__btn" href="#contact" data-interest="Развитие">Обсудить развитие</a>
+              </div>
             </article>
+            <article class="vd-offer__card">
+              <h3>Система</h3>
+              <p>Сайт, реклама и видео вместе</p>
+              <ul class="vd-offer__list">
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Разработка и развитие сайта.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Контекстная реклама и SEO.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Съёмка и монтаж для YouTube.</li>
+                <li><svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="9" fill="#d5eb00"/><path d="M5 9.2 7.6 12 13 6.5" fill="none" stroke="#1e1e1b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Общая аналитика.</li>
+              </ul>
+              <div class="vd-offer__foot">
+                <p class="vd-offer__note">Индивидуальный состав работ</p>
+                <a class="vd-offer__btn" href="#contact" data-interest="Система">Обсудить проект</a>
+              </div>
+            </article>
+          </div>
+          <ul class="vd-offer__meta">
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg>Разработка — разово</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>Сопровождение — ежемесячно</li>
+            <li><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg>Рекламный бюджет — отдельно</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="vd-close vd-close--light" id="faq" aria-labelledby="faq-title">
+        <div class="vd-close__container">
+          <div class="vd-faq__layout">
+            <div>
+              <h2 id="faq-title">Вопросы<br><span>перед стартом</span></h2>
+              <p class="vd-close__lead">Коротко о сроках, бюджете и формате работы.</p>
+              <a class="vd-faq__ask" href="#contact">Задать свой вопрос <span aria-hidden="true">↗</span></a>
+            </div>
+            <div class="vd-faq__list">
+              <details open>
+                <summary>Можно начать с одной услуги? <span aria-hidden="true"></span></summary>
+                <p>Да. Начнём с приоритетной задачи, а остальные инструменты подключим по мере необходимости.</p>
+              </details>
+              <details>
+                <summary>Что входит в SEO-базу сайта? <span aria-hidden="true"></span></summary>
+                <p>Во время разработки закладываем структуру страниц, метаданные, внутренние ссылки и технические настройки. Дальнейшее продвижение обсуждаем отдельно.</p>
+              </details>
+              <details>
+                <summary>Когда можно запускать рекламу? <span aria-hidden="true"></span></summary>
+                <p>Когда готова посадочная страница, настроены обращения и аналитика. Не обязательно ждать завершения всего сайта.</p>
+              </details>
+              <details>
+                <summary>Входит ли рекламный бюджет в стоимость? <span aria-hidden="true"></span></summary>
+                <p>Нет. Бюджет рекламных площадок оплачивается отдельно от разработки и работы по настройке и ведению рекламы.</p>
+              </details>
+              <details>
+                <summary>Можно доработать существующий сайт? <span aria-hidden="true"></span></summary>
+                <p>Сначала изучим его состояние и задачи бизнеса. После этого предложим подходящий объём доработок.</p>
+              </details>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="vdp-section vdp-review" id="open-review" aria-labelledby="review-title">
-        <div class="container vdp-review-grid">
-          <div><span class="vdp-status">Открытый разбор · В работе</span><h2 class="vdp-title" id="review-title">Не каждый запуск приносит клиентов</h2></div>
-          <div class="vdp-review-copy">
-            <h3>ТопАгроБел — наружные сети и благоустройство для организаций</h3>
-            <p>Продвигаем наружные инженерные сети и благоустройство для промышленных заказчиков. По текущим данным, заказчиков из контекстной рекламы пока нет.</p>
-            <div class="vdp-review-steps"><p><span>Сейчас</span>Проверяем спрос, качество обращений и путь посетителя.</p><p><span>Следующий этап</span>Развитие посадочных страниц и SEO.</p></div>
+      <section class="vd-close vd-close--dark" id="contact" aria-labelledby="contact-title">
+        <div class="vd-close__container">
+          <div class="vd-contact__layout">
+            <div>
+              <h2 id="contact-title">Расскажите о бизнесе —<br><span>обсудим следующий шаг</span></h2>
+              <p class="vd-close__lead">Посмотрим, что уже есть, какую задачу нужно решить и с чего разумнее начать.</p>
+              <ul class="vd-contact__channels">
+                <li><a href="https://t.me/vitalikdoyniak" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 11.5 16-6.5-6 16-2.8-6.2L4 11.5Z"/><path d="m11.2 14.8 2.6-2.8"/></svg>Telegram <span aria-hidden="true">↗</span></a></li>
+              </ul>
+            </div>
+            <form class="vd-contact__form" id="contact-form" novalidate>
+              <div class="vd-close__field">
+                <label for="name">Как к вам обращаться</label>
+                <input type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+                <p class="vd-close__error" id="name-error"></p>
+              </div>
+              <div class="vd-close__field">
+                <label for="contact-channel">Телефон или Telegram</label>
+                <input type="text" id="contact-channel" name="contact" autocomplete="tel" required aria-describedby="contact-error">
+                <p class="vd-close__error" id="contact-error"></p>
+              </div>
+              <div class="vd-close__field">
+                <label for="interest">Интересует</label>
+                <select id="interest" name="interest" required aria-describedby="interest-error">
+                  <option value="">Выберите формат</option>
+                  <option>Запуск</option>
+                  <option>Развитие</option>
+                  <option>Система</option>
+                  <option>Пока не определился</option>
+                </select>
+                <p class="vd-close__error" id="interest-error"></p>
+              </div>
+              <div class="vd-close__field">
+                <label for="message">Чем занимается ваш бизнес?</label>
+                <textarea id="message" name="message" rows="4" required aria-describedby="message-error"></textarea>
+                <p class="vd-close__error" id="message-error"></p>
+              </div>
+              <button type="submit" class="vd-close__submit">Обсудить проект</button>
+              <p class="vd-close__caption">Ответим и уточним детали задачи.</p>
+              <p class="vd-close__status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
           </div>
-        </div>
-      </section>
-
-      <section class="vdp-section vdp-light" id="analytics" aria-labelledby="analytics-title">
-        <div class="container">
-          <div class="vdp-head"><p class="vdp-eyebrow">Аналитика</p><h2 class="vdp-title" id="analytics-title">Считаем обращения, а не только клики</h2><p class="vdp-lead">Отслеживаем, откуда приходят обращения и какие запросы соответствуют вашим услугам. Продажи и окупаемость оцениваем, когда есть данные заказчика.</p></div>
-          <ol class="vdp-funnel"><li><span>01</span>Источник</li><li><span>02</span>Обращение</li><li><span>03</span>Квалифицированный запрос</li><li><span>04</span>Сделка</li></ol>
-        </div>
-      </section>
-
-      <section class="vdp-section vdp-dark" id="process" aria-labelledby="process-title">
-        <div class="container">
-          <div class="vdp-head"><p class="vdp-eyebrow">Как мы работаем</p><h2 class="vdp-title" id="process-title">Запускаем поэтапно.<br>Всё связываем сразу.</h2></div>
-          <div class="vdp-step-tabs" role="tablist" aria-label="Этапы запуска">
-            <button type="button" role="tab" aria-selected="true" aria-controls="process-panel-1" id="process-tab-1" data-slide="0"><b>01</b>Бизнес</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-2" id="process-tab-2" data-slide="1" tabindex="-1"><b>02</b>Спрос</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-3" id="process-tab-3" data-slide="2" tabindex="-1"><b>03</b>Сайт</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-4" id="process-tab-4" data-slide="3" tabindex="-1"><b>04</b>Реклама</button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="process-panel-5" id="process-tab-5" data-slide="4" tabindex="-1"><b>05</b>Развитие</button>
-          </div>
-          <div class="vdp-slider" aria-live="polite">
-            <article class="vdp-slide is-active" role="tabpanel" id="process-panel-1" aria-labelledby="process-tab-1" data-process-slide>
-              <div class="vdp-slide-copy"><span>Шаг 01</span><h3>Разбираемся в вашем бизнесе</h3><p>Определяем услуги, заказчиков, географию и преимущества компании.</p></div>
-              <div class="vdp-directions"><div>Каркасные дома</div><div>Газобетон</div><div>Кирпич</div><div>Монолит</div></div>
-            </article>
-            <article class="vdp-slide" role="tabpanel" id="process-panel-2" aria-labelledby="process-tab-2" data-process-slide hidden>
-              <div class="vdp-slide-copy"><span>Шаг 02</span><h3>Проверяем, что ищут клиенты</h3><p>Анализируем запросы в Google и Яндексе и выбираем первое направление для запуска.</p></div>
-              <div class="vdp-query-list"><div>каркасный дом под ключ</div><div class="is-chosen">проекты каркасных домов</div><div>дом из газобетона</div><p>Для примера начинаем с каркасных домов</p></div>
-            </article>
-            <article class="vdp-slide" role="tabpanel" id="process-panel-3" aria-labelledby="process-tab-3" data-process-slide hidden>
-              <div class="vdp-slide-copy"><span>Шаг 03</span><h3>Готовим первое направление</h3><p>Проверяем форму заявки и подключаем аналитику.</p><strong class="vdp-launch-time">Ориентир первого запуска — 2–3 недели<small>Зависит от проекта, готовности материалов и согласований.</small></strong></div>
-              <div class="vdp-page-tree"><div>Главная</div><div>О компании</div><div>Контакты</div><div class="is-chosen">Каркасные дома</div></div>
-            </article>
-            <article class="vdp-slide" role="tabpanel" id="process-panel-4" aria-labelledby="process-tab-4" data-process-slide hidden>
-              <div class="vdp-slide-copy"><span>Шаг 04</span><h3>Запускаем рекламу</h3><p>Проверяем формы и отслеживаем обращения.</p></div>
-              <div class="vdp-mini-chain"><div>«Каркасный дом под ключ»</div><b>→</b><div>«Каркасные дома под ключ»<small>в объявлении</small></div><b>→</b><div>«Каталог каркасных домов»<small>на сайте</small></div><b>→</b><div>Звонок или заявка</div></div>
-            </article>
-            <article class="vdp-slide" role="tabpanel" id="process-panel-5" aria-labelledby="process-tab-5" data-process-slide hidden>
-              <div class="vdp-slide-copy"><span>Шаг 05</span><h3>Первое уже работает — делаем следующее</h3><p>Пока реклама каркасных домов привлекает посетителей, мы готовим остальные направления.</p><strong class="vdp-slide-thought">Не ждём готовности всего сайта, чтобы запустить первое направление.</strong></div>
-              <div class="vdp-progress-cols"><div><span>Уже работает</span><h4>Страница каркасных домов</h4><p>✓ Страница опубликована</p><p>✓ Реклама запущена</p></div><div><span>Следующее направление</span><h4>Страница домов из газобетона</h4><p>Готовим страницу и объявления.</p><small>Далее — кирпичные и монолитные дома по той же схеме.</small></div></div>
-            </article>
-          </div>
-          <div class="vdp-slider-controls">
-            <button class="vdp-slider-arrow" type="button" data-prev aria-label="Предыдущий шаг" disabled>←</button>
-            <span data-counter>Шаг 1 из 5</span>
-            <div class="vdp-dots" aria-label="Выбор шага"><button type="button" class="is-active" data-dot="0" aria-label="Шаг 1" aria-current="step"></button><button type="button" data-dot="1" aria-label="Шаг 2"></button><button type="button" data-dot="2" aria-label="Шаг 3"></button><button type="button" data-dot="3" aria-label="Шаг 4"></button><button type="button" data-dot="4" aria-label="Шаг 5"></button></div>
-            <button class="vdp-slider-arrow" type="button" data-next aria-label="Следующий шаг">→</button>
-          </div>
-          <div class="vdp-always"><p>SEO — при разработке каждой страницы.</p><p>Видео — параллельно работе над сайтом.</p></div>
-          <a class="vdp-button" href="#contact" data-direction="complex">Обсудить первый запуск</a>
-        </div>
-      </section>
-
-      <section class="vdp-section vdp-studio" id="studio" aria-labelledby="studio-title">
-        <div class="container vdp-studio-grid">
-          <div class="vdp-owner-photo"><img src="assets/vitalik-hero-bg.webp" alt="Виталик Дойняк" width="1774" height="887" loading="lazy"></div>
-          <div><p class="vdp-eyebrow">О студии</p><h2 class="vdp-title" id="studio-title">Разбираемся в задаче и доводим до запуска</h2><p class="vdp-lead">Сайты, контекстная реклама и видео продумываются совместно.</p><a class="vdp-text-link" href="#contact">Связаться и обсудить задачу →</a></div>
-        </div>
-      </section>
-
-      <section class="vdp-section vdp-light" id="faq" aria-labelledby="faq-title">
-        <div class="container vdp-faq-layout">
-          <div><p class="vdp-eyebrow">До старта</p><h2 class="vdp-title" id="faq-title">Вопросы перед стартом</h2></div>
-          <div class="vdp-faq-list">
-            <details><summary>Можно заказать одну услугу?</summary><p>Да. Можно обсудить сайт, рекламу или видео отдельно. Перед началом проверим, как выбранный инструмент связан с остальными.</p></details>
-            <details><summary>Если сайт уже есть?</summary><p>Изучим структуру, содержание, удобство и готовность к рекламе. После этого предложим необходимые изменения.</p></details>
-            <details><summary>Что входит в SEO-базу?</summary><p>Структура страниц, заголовки, метаданные, внутренние ссылки и техническая подготовка к поиску. Точный состав фиксируем перед началом работ.</p></details>
-            <details><summary>Обязательно ли снимать видео?</summary><p>Нет. Видео подключаем, когда оно помогает объяснить продукт, показать работу или снять сомнения клиента.</p></details>
-            <details><summary>Когда можно запустить рекламу?</summary><p>Когда готова подходящая страница, проверены формы и аналитика, подготовлены объявления. Для первого направления ориентир — 2–3 недели, в зависимости от проекта.</p></details>
-            <details><summary>Гарантируете заявки?</summary><p>Число и стоимость обращений зависят от спроса, конкуренции, предложения и рекламного бюджета. Согласуем задачи, отслеживаем данные и улучшаем систему.</p></details>
-          </div>
-        </div>
-      </section>
-
-      <section class="vdp-section vdp-dark" id="contact" aria-labelledby="contact-title">
-        <div class="container vdp-contact-grid">
-          <div><p class="vdp-eyebrow">Контакты</p><h2 class="vdp-title" id="contact-title">С чего начнём ваш проект?</h2><p class="vdp-lead">Расскажите, что продаёте и какую задачу хотите решить.</p><ul class="vdp-contacts"><li><a href="https://t.me/vitalikdoyniak" target="_blank" rel="noopener">Telegram ↗</a></li><li><a href="mailto:hello@vitalikdoyniak.com">hello@vitalikdoyniak.com</a></li></ul></div>
-          <form class="vdp-form" id="contact-form" novalidate>
-            <input type="hidden" id="direction" name="direction" value="complex">
-            <div class="vdp-field"><label for="name">Имя</label><input type="text" id="name" name="name" autocomplete="name" required><span class="vdp-error" id="name-error"></span></div>
-            <div class="vdp-field"><label for="contact-channel">Телефон или Telegram</label><input type="text" id="contact-channel" name="contact" autocomplete="tel" required><span class="vdp-error" id="contact-error"></span></div>
-            <div class="vdp-field"><label for="message">Коротко о задаче</label><textarea id="message" name="message" rows="5" required></textarea><span class="vdp-error" id="message-error"></span></div>
-            <button type="submit" class="vdp-button">Обсудить проект</button>
-            <p class="vdp-form-note" id="form-status" role="status" aria-live="polite">После заполнения откроется письмо в вашей почтовой программе.</p>
-          </form>
         </div>
       </section>
     </div>
     </div>
   </main>
 
-  <footer class="vd-page vd-footer">
-    <div class="container vd-footer-grid">
-      <div class="vd-footer-brand">
-        <a href="#hero" class="vd-wordmark">VD Group</a>
-        <p>Связываем сайт, рекламу и видео в одну систему привлечения клиентов.</p>
+  <footer class="vd-closefoot">
+    <div class="vd-closefoot__inner">
+      <div class="vd-closefoot__brand">
+        <a href="#hero">VD Group</a>
+        <span>Сайты · Реклама · Видео</span>
       </div>
-      <nav aria-label="Навигация в подвале">
-        <h2>Разделы</h2>
-        <ul>
-          <li><a href="#services">Услуги</a></li>
-          <li><a href="#projects">Проекты</a></li>
-          <li><a href="#process">Как работаем</a></li>
-          <li><a href="#faq">Вопросы</a></li>
-          <li><a href="#contact">Контакты</a></li>
-        </ul>
+      <nav class="vd-closefoot__nav" aria-label="Навигация в подвале">
+        <a href="#cases">Кейсы</a>
+        <a href="#offers">Форматы работы</a>
+        <a href="#contact">Контакты</a>
       </nav>
-      <div>
-        <h2>Связь</h2>
-        <ul>
-          <li><a href="https://t.me/vitalikdoyniak" target="_blank" rel="noopener">Telegram</a></li>
-          <li><a href="mailto:hello@vitalikdoyniak.com">hello@vitalikdoyniak.com</a></li>
-          <li><a href="https://youtube.com/@vitalikdoyniak" target="_blank" rel="noopener">YouTube</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="vd-footer-bottom">
-      <div class="container">
-        <p>&copy; <span id="year"></span> VD Group</p>
-      </div>
     </div>
   </footer>
 
+
   <script src="script.js"></script>
+  <script src="section-motion.js" defer></script>
+  <script src="review.js" defer></script>
 </body>
 </html>

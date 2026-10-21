@@ -8,9 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initProjectFilter();
   initContactForm();
-  initAdExamples();
   initProcessSlider();
   initSystemGears();
+  initDemandPreview();
   initFooterYear();
   initSmoothScroll();
   initNavActive();
@@ -94,16 +94,20 @@ function initContactForm() {
   const fields = {
     name: { el: form.querySelector('#name'), error: form.querySelector('#name-error') },
     contact: { el: form.querySelector('#contact-channel'), error: form.querySelector('#contact-error') },
-    direction: { el: form.querySelector('#direction'), error: form.querySelector('#direction-error') },
+    interest: { el: form.querySelector('#interest'), error: form.querySelector('#interest-error') },
     message: { el: form.querySelector('#message'), error: form.querySelector('#message-error') }
   };
   const status = document.getElementById('form-status');
-  const labels = { site: 'Сайт', ads: 'Реклама', seo: 'SEO', video: 'Видео', complex: 'Комплекс' };
+  const interestFromDirection = { complex: 'Система' };
 
-  document.querySelectorAll('[data-direction]').forEach((link) => {
+  document.querySelectorAll('[data-interest], [data-direction]').forEach((link) => {
     link.addEventListener('click', () => {
-      if (!fields.direction.el) return;
-      fields.direction.el.value = link.dataset.direction || '';
+      if (!fields.interest.el) return;
+      const value = link.dataset.interest || interestFromDirection[link.dataset.direction] || '';
+      if (!value) return;
+      fields.interest.el.value = value;
+      fields.interest.el.classList.remove('error');
+      if (fields.interest.error) fields.interest.error.textContent = '';
     });
   });
 
@@ -115,29 +119,29 @@ function initContactForm() {
     let firstInvalid = null;
 
     if (!fields.name.el.value.trim()) {
-      showError(fields.name, 'Введите имя');
+      showError(fields.name, 'Напишите, как к вам обращаться');
       valid = false;
       firstInvalid = firstInvalid || fields.name.el;
     }
 
     if (!fields.contact.el.value.trim()) {
-      showError(fields.contact, 'Укажите телефон или другой контакт');
+      showError(fields.contact, 'Укажите телефон или Telegram');
       valid = false;
       firstInvalid = firstInvalid || fields.contact.el;
     }
 
-    if (!fields.direction.el.value) {
-      showError(fields.direction, 'Выберите направление');
+    if (!fields.interest.el.value) {
+      showError(fields.interest, 'Выберите, что вас интересует');
       valid = false;
-      firstInvalid = firstInvalid || fields.direction.el;
+      firstInvalid = firstInvalid || fields.interest.el;
     }
 
     if (!fields.message.el.value.trim()) {
-      showError(fields.message, 'Опишите задачу');
+      showError(fields.message, 'Коротко опишите, чем занимается бизнес');
       valid = false;
       firstInvalid = firstInvalid || fields.message.el;
     } else if (fields.message.el.value.trim().length < 10) {
-      showError(fields.message, 'Минимум 10 символов');
+      showError(fields.message, 'Нужно хотя бы 10 символов');
       valid = false;
       firstInvalid = firstInvalid || fields.message.el;
     }
@@ -147,15 +151,15 @@ function initContactForm() {
       return;
     }
 
-    const direction = labels[fields.direction.el.value] || fields.direction.el.value;
+    const interest = fields.interest.el.value;
     const body = [
       `Имя: ${fields.name.el.value.trim()}`,
       `Контакт: ${fields.contact.el.value.trim()}`,
-      `Направление: ${direction}`,
+      `Интересует: ${interest}`,
       '',
       fields.message.el.value.trim()
     ].join('\n');
-    const mailto = `mailto:hello@vitalikdoyniak.com?subject=${encodeURIComponent('Проект VD Group — ' + direction)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:hello@vitalikdoyniak.com?subject=${encodeURIComponent('Проект VD Group — ' + interest)}&body=${encodeURIComponent(body)}`;
 
     if (status) {
       status.textContent = 'Форма не отправляет заявку на сервер. Откроется письмо в почтовой программе. Если оно не открылось, напишите на hello@vitalikdoyniak.com или в Telegram.';
@@ -165,84 +169,29 @@ function initContactForm() {
 
   Object.values(fields).forEach(({ el, error }) => {
     if (!el) return;
-    el.addEventListener('input', () => {
+    const clearField = () => {
       el.classList.remove('error');
+      el.removeAttribute('aria-invalid');
       if (error) error.textContent = '';
-    });
-    el.addEventListener('change', () => {
-      el.classList.remove('error');
-      if (error) error.textContent = '';
-    });
+    };
+    el.addEventListener('input', clearField);
+    el.addEventListener('change', clearField);
   });
 }
 
 function showError(field, message) {
+  if (!field.el) return;
   field.el.classList.add('error');
+  field.el.setAttribute('aria-invalid', 'true');
   if (field.error) field.error.textContent = message;
 }
 
 function clearErrors(fields) {
   Object.values(fields).forEach(({ el, error }) => {
+    if (!el) return;
     el.classList.remove('error');
+    el.removeAttribute('aria-invalid');
     if (error) error.textContent = '';
-  });
-}
-
-function initAdExamples() {
-  const tabs = [...document.querySelectorAll('.vdp-tabs [role="tab"]')];
-  const panel = document.getElementById('ad-demo');
-  if (!tabs.length || !panel) return;
-
-  const examples = {
-    frame: {
-      query: 'Каркасный дом под ключ',
-      ad: 'Каркасные дома под ключ',
-      page: 'Каталог каркасных домов',
-      copy: 'Проекты, варианты комплектации и этапы строительства каркасных домов.'
-    },
-    aero: {
-      query: 'Дом из газобетона под ключ',
-      ad: 'Дома из газобетона под ключ',
-      page: 'Каталог домов из газобетона',
-      copy: 'Проекты, варианты планировок и этапы строительства домов из газобетона.'
-    },
-    brick: {
-      query: 'Кирпичный дом под ключ',
-      ad: 'Кирпичные дома под ключ',
-      page: 'Каталог кирпичных домов',
-      copy: 'Проекты, архитектурные решения и этапы строительства кирпичных домов.'
-    }
-  };
-
-  const setExample = (tab, focus = false) => {
-    const data = examples[tab.dataset.ad];
-    if (!data) return;
-    tabs.forEach((item) => {
-      const active = item === tab;
-      item.setAttribute('aria-selected', String(active));
-      item.tabIndex = active ? 0 : -1;
-    });
-    panel.setAttribute('aria-labelledby', tab.id);
-    panel.querySelector('[data-ad-query]').textContent = data.query;
-    panel.querySelector('[data-ad-title]').textContent = data.ad;
-    panel.querySelector('[data-page-title]').textContent = data.page;
-    panel.querySelector('[data-page-copy]').textContent = data.copy;
-    panel.querySelector('[data-ad-visual]').dataset.adVisual = tab.dataset.ad;
-    if (focus) tab.focus();
-  };
-
-  tabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => setExample(tab));
-    tab.addEventListener('keydown', (event) => {
-      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault();
-      let next = index;
-      if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
-      if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-      if (event.key === 'Home') next = 0;
-      if (event.key === 'End') next = tabs.length - 1;
-      setExample(tabs[next], true);
-    });
   });
 }
 
@@ -1268,4 +1217,107 @@ function initSystemGears() {
   };
   if (reduced.addEventListener) reduced.addEventListener('change', onReduce);
   else if (reduced.addListener) reduced.addListener(onReduce);
+}
+
+function initDemandPreview() {
+  const section = document.querySelector('.demand');
+  if (!section) return;
+  const image = section.querySelector('.website');
+  const code = section.querySelector('.code-lines');
+  const button = section.querySelector('.replay');
+  if (!image || !code || !button) return;
+
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let animations = [];
+  let started = false;
+  let visible = false;
+
+  const cancel = () => {
+    animations.forEach((animation) => animation.cancel());
+    animations = [];
+  };
+
+  function loopFrames(frames) {
+    const down = frames.map((frame) => ({ ...frame, offset: 0.025 + frame.offset * 0.45 }));
+    const up = [...frames].reverse().map((frame) => ({ ...frame, offset: 0.525 + (1 - frame.offset) * 0.45 }));
+    return [
+      { ...frames[0], offset: 0 },
+      ...down,
+      { ...frames[frames.length - 1], offset: 0.5 },
+      ...up,
+      { ...frames[0], offset: 1 },
+    ];
+  }
+
+  async function start() {
+    if (motion.matches) return;
+    try {
+      await image.decode();
+    } catch {
+      return;
+    }
+    cancel();
+    const travel = Math.max(0, image.offsetHeight - image.parentElement.clientHeight);
+    const codeTravel = Math.max(0, code.scrollHeight - code.parentElement.clientHeight + 28);
+    const imageFrames = [
+      { transform: 'translateY(0)', offset: 0 },
+      { transform: 'translateY(0)', offset: 0.18 },
+      { transform: `translateY(-${travel * 0.13}px)`, offset: 0.30 },
+      { transform: `translateY(-${travel * 0.26}px)`, offset: 0.40 },
+      { transform: `translateY(-${travel * 0.39}px)`, offset: 0.50 },
+      { transform: `translateY(-${travel * 0.55}px)`, offset: 0.64 },
+      { transform: `translateY(-${travel * 0.68}px)`, offset: 0.76 },
+      { transform: `translateY(-${travel * 0.79}px)`, offset: 0.86 },
+      { transform: `translateY(-${travel}px)`, offset: 1 },
+    ];
+    const rows = [...code.querySelectorAll('.code-line')];
+    const markers = [
+      '<!-- Hero:',
+      '<!-- Калькулятор',
+      '<!-- Понятная',
+      '<!-- Видео',
+      '<section id="tour-section"',
+      '<section id="workflow"',
+      '<section id="yandex-map"',
+      '<section id="testimonials"',
+    ];
+    const offsets = [0.18, 0.30, 0.40, 0.50, 0.64, 0.76, 0.86, 0.95];
+    const codeFrames = [{ transform: 'translateY(0)', offset: 0 }];
+    markers.forEach((marker, index) => {
+      const row = rows.find((line) => line.textContent.includes(marker));
+      const shift = row ? Math.min(codeTravel, row.offsetTop - rows[0].offsetTop) : 0;
+      codeFrames.push({ transform: `translateY(-${Math.max(0, shift)}px)`, offset: offsets[index] });
+    });
+    codeFrames.push({ transform: `translateY(-${codeTravel}px)`, offset: 1 });
+    const timing = { duration: 80000, easing: 'linear', iterations: Infinity, fill: 'both' };
+    animations = [
+      image.animate(loopFrames(imageFrames), timing),
+      code.animate(loopFrames(codeFrames), timing),
+    ];
+    if (!visible) animations.forEach((animation) => animation.pause());
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    visible = entries[0].isIntersecting;
+    if (visible && !started) {
+      started = true;
+      start();
+    } else {
+      animations.forEach((animation) => (visible ? animation.play() : animation.pause()));
+    }
+  }, { threshold: 0.15 });
+
+  observer.observe(section);
+  button.addEventListener('click', start);
+
+  const onMotion = () => {
+    cancel();
+    if (!motion.matches && visible) start();
+  };
+  if (motion.addEventListener) motion.addEventListener('change', onMotion);
+  else if (motion.addListener) motion.addListener(onMotion);
+
+  document.addEventListener('visibilitychange', () => {
+    animations.forEach((animation) => (document.hidden || !visible ? animation.pause() : animation.play()));
+  });
 }
